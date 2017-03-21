@@ -15,7 +15,7 @@ Creating a Viable Open Source Alternative to Magma, Maple, Mathematica, and MATL
 Current build status
 ====================
 
-Linux: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+Linux: [![Circle CI](https://circleci.com/gh/conda-forge/sage-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/sage-feedstock)
 OSX: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
 Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
 
