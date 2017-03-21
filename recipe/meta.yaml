@@ -18,7 +18,6 @@ requirements:
     - numpy 1.11.*
     - openblas 0.2.19|0.2.19.*
     - python
-    - r-base
   run:
     - alabaster
     - appnope  # [osx]
@@ -111,7 +110,6 @@ requirements:
     - python-dateutil
     - pytz
     - pyzmq
-    - r-base
     - ratpoints
     - readline 6.2*
     - rubiks
