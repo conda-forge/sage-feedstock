@@ -7,17 +7,17 @@ package:
 
 build:
   number: 0
-  skip: true  # [win or osx]
-  skip: true  # [py!=27]
+  skip: true  # [win or osx or py3k]
   features:
     - blas_openblas
 
-requirements:
+requirements:  # [not win32]
   build:
     - blas 1.1 openblas
     - numpy 1.11.*
     - openblas 0.2.19|0.2.19.*
     - python
+    - r-base
   run:
     - alabaster
     - appnope  # [osx]
@@ -110,6 +110,7 @@ requirements:
     - python-dateutil
     - pytz
     - pyzmq
+    - r-base
     - ratpoints
     - readline 6.2*
     - rubiks
