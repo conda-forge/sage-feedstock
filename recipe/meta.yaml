@@ -108,7 +108,7 @@ requirements:  # [not win32]
     - rw
     - sagelib {{ version }}
     - sagemath-db-combinatorial-designs
-    - sagemath-db-conway-polynomials 0.4
+    - sagemath-db-conway-polynomials 0.4.*
     - sagemath-db-elliptic-curves
     - sagemath-db-graphs
     - sagemath-db-polytopes
