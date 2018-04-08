@@ -1,5 +1,5 @@
 {% set name = "sage" %}
-{% set version = "8.1" %}
+{% set version = "8.2" %}
 
 package:
   name: {{ name }}
@@ -16,6 +16,7 @@ requirements:  # [not win32]
     - appnope  # [osx]
     - arb
     - backports.shutil_get_terminal_size
+    - backports.functools_lru_cache
     - backports_abc
     - bdw-gc
     - boost-cpp
@@ -58,6 +59,7 @@ requirements:  # [not win32]
     - jupyter_client
     - jupyter_core
     - lcalc
+    - libatomic_ops
     - libflint
     - libgap
     - libgd
@@ -113,13 +115,17 @@ requirements:  # [not win32]
     - sagemath-db-elliptic-curves
     - sagemath-db-graphs
     - sagemath-db-polytopes
+    - scandir
+    - send2trash
     - scipy
     - simplegeneric
     - singledispatch
     - singular
     - six
+    - sphinxcontrib-websupport
     - sqlite
     - ssl_match_hostname
+    - subprocess32
     - symmetrica
     - sympow
     - sympy
