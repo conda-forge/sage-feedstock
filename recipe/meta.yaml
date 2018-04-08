@@ -175,7 +175,8 @@ requirements:  # [not win32]
 
 test:
   commands:
-    sage -v
+    - sage -v
+    - sage -c 1+1
 
 
 about:
