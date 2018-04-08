@@ -185,7 +185,7 @@ about:
   summary: 'Sage - Open Source Mathematical Software'
   description: |
     Creating a Viable Open Source Alternative to Magma, Maple, Mathematica, and MATLAB.
-  doc_url: http://http://doc.sagemath.org/
+  doc_url: https://doc.sagemath.org/
   dev_url: https://trac.sagemath.org
 
 extra:
