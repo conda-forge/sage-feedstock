@@ -8,8 +8,11 @@ package:
 build:
   number: 0
   skip: true  # [win]
+  skip: true  # [py!=27]
 
 requirements:
+  build:
+    - python
   run:
     - alabaster
     - appnope  # [osx]
