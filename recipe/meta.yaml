@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   skip: true  # [py!=27]
 
@@ -14,125 +14,131 @@ requirements:
   build:
     - python
   run:
-    - alabaster
-    - appnope  # [osx]
-    - arb
-    - backports.shutil_get_terminal_size
-    - backports_abc
-    - bdw-gc
-    - boost-cpp
-    - brial
-    - cddlib
-    - certifi
-    - cliquer
-    - configparser
-    - cvxopt
-    - cycler
-    - cysignals
-    - decorator
-    - docutils
-    - ecl
-    - eclib
-    - ecm
-    - entrypoints
-    - fflas-ffpack
-    - flintqs
-    - fplll
-    - fpylll
-    - freetype
-    - functools32
-    - future
-    - gap
-    - gf2x
-    - gfan
-    - giac
-    - givaro
-    - glpk
-    - gmp
-    - gsl
-    - iml
-    - ipykernel
-    - ipython
-    - ipython_genutils
-    - ipywidgets
-    - jinja2
-    - jsonschema
-    - jupyter_client
-    - jupyter_core
-    - lcalc
-    - libflint
-    - libgap
-    - libgd
-    - libiconv
-    - libpng
-    - linbox
-    - lrcalc
-    - m4ri
-    - m4rie
-    - matplotlib
-    - maxima
-    - mistune
-    - mpc
-    - mpfi
-    - mpfr
-    - mpmath
-    - nauty
-    - nbconvert
-    - nbformat
-    - ncurses
-    - networkx
-    - notebook
-    - ntl
-    - numpy
-    - openblas
-    - palp
-    - pari
-    - path.py
-    - pathlib2
-    - pexpect
-    - pickleshare
-    - planarity
-    - ppl
-    - prompt_toolkit
-    - psutil
-    - ptyprocess
-    - pycrypto
-    - pygments
-    - pynac
-    - pyparsing
-    - python
-    - python-dateutil
-    - pytz
-    - pyzmq
-    - ratpoints
-    - readline
-    - rpy2
-    - rubiks
-    - rw
+    # We require all dependencies with at least that version that upstream uses
+    # in their SPKGs. For packages that (seem to) use semantic versioning and
+    # are at least 1.0.0, we limit the version to the next major release.
+    - alabaster >=0.7.8
+    - appnope >=0.1.0  # [osx]
+    - arb >=2.11.1,<3
+    - backports.shutil_get_terminal_size >=1.0.0,<2
+    - backports_abc >=0.5
+    - bdw-gc >=7.2f,<8
+    - boost-cpp >=1.61.0,<2
+    - brial >=1.0.1,<2
+    - cddlib >=0.94g
+    - certifi >=2016.2.28
+    - cliquer >=1.21,<2
+    - configparser >=3.5.0,<4
+    - cvxopt >=1.1.8,<2
+    - cycler >=0.10.0
+    - cysignals >=1.6.5,<2
+    - decorator >=4.0.6,<5
+    - docutils >=0.13.1
+    - ecl >=16.1.2,<17
+    - eclib >=20171002
+    - ecm >=7.0.4,<8
+    - entrypoints >=0.2.2
+    - fflas-ffpack >=2.2.2,<2.3.0
+    - flintqs >=1.0,<2
+    - fplll >=5.2.0,<6
+    - fpylll >=0.3.0dev
+    - freetype >=2.6.3,<3
+    - functools32 >=3.2.3,<4
+    - future >=0.15.2
+    - gap >=4.8.6,<5
+    - gf2x >=1.2,<2
+    - gfan >=0.5
+    - giac >=1.2.3,<2
+    - givaro 4.0.2
+    - glpk >=4.63,<5
+    - gmp >=6.1.2,<7
+    - gsl >=2.3,<3
+    - iml >=1.0.4,<2
+    - ipykernel >=4.6.1,<5
+    - ipython >=5.1.0,<6
+    - ipython_genutils >=0.2.0
+    - ipywidgets >=6.0.0,<7
+    - jinja2 >=2.8,<3
+    - jsonschema >=2.5.1,<3
+    - jupyter_client >=5.1.0,<6
+    - jupyter_core >=4.3.0,<5
+    - lcalc >=1.23,<2
+    - libflint >=2.5.2,<3
+    - libgap >=4.8.6,<5
+    - libgd >=2.1.1.1,<3
+    - libiconv >=1.14,<2
+    - libpng >=1.6.29,<2
+    - linbox >=1.4.2,<1.5
+    - lrcalc >=1.2,<2
+    - m4ri >=20140914
+    - m4rie >=20150908
+    - matplotlib >=1.5.1,<2
+    - maxima >=5.39.0,<6
+    - mistune >=0.7.3
+    - mpc >=1.0.3,<2
+    - mpfi >=1.5.1,<2
+    - mpfr >=3.1.5,<4
+    - mpmath >=0.19
+    - nauty >=2.6r7,<3
+    - nbconvert >=4.2.0,<5
+    - nbformat >=4.4.0,<5
+    # Sage uses 6.0 but our GAP uses 5.9, see https://github.com/conda-forge/gap-feedstock/pull/11
+    - ncurses >=5.9,<7
+    - networkx >=1.11,<2
+    - notebook >=4.4.1,<5
+    - ntl >=10.3.0,<11
+    - numpy >=1.13.3,<2
+    - openblas >=0.2.20
+    - palp >=2.1,<3
+    # Sage uses an unreleased 2.10 pre-release
+    - pari >=2.9,<3
+    - path.py >=7.1,<8
+    - pathlib2 >=2.1.0,<3
+    - pexpect >=4.1.0,<5
+    - pickleshare >=0.7.2
+    - planarity >=3.0.0.5,<4
+    - ppl >=1.2,<2
+    - prompt_toolkit >=1.0.9,<2
+    - psutil >=5.2.0,<6
+    - ptyprocess >=0.5.1
+    - pycrypto >=2.6.1,<3
+    - pygments >=2.2.0,<3
+    - pynac >=0.7.12
+    - pyparsing >=2.1.5,<3
+    - python   # [py==27]
+    - python-dateutil >=2.5.3,<3
+    - pytz >=2016.4
+    - pyzmq >=16.0.0,<17
+    - ratpoints >=2.1.3,<3
+    # Sage uses 6.3 but our PARI and GAP use 6.2, see https://github.com/conda-forge/gap-feedstock/pull/11, https://github.com/conda-forge/pari-feedstock/pull/8
+    - readline 6.2*
+    - rpy2 >=2.8.2,<3
+    - rubiks >=20070912
+    - rw >=0.7
     - sagelib {{ version }}
-    - sagemath-db-combinatorial-designs
-    - sagemath-db-conway-polynomials 0.5.*
-    - sagemath-db-elliptic-curves
-    - sagemath-db-graphs
-    - sagemath-db-polytopes
-    - scipy
-    - simplegeneric
-    - singledispatch
-    - singular
-    - six
-    - sqlite
-    - ssl_match_hostname
-    - symmetrica
-    - sympow
-    - sympy
-    - terminado
-    - tornado
-    - traitlets
-    - wcwidth
-    - widgetsnbextension
-    - zeromq
-    - zlib
-    - zn_poly
+    - sagemath-db-combinatorial-designs >=20140630
+    - sagemath-db-conway-polynomials >=0.5.*
+    - sagemath-db-elliptic-curves >=0.8
+    - sagemath-db-graphs >=20161026
+    - sagemath-db-polytopes >=20170220
+    - scipy >=0.19.1
+    - simplegeneric >=0.8.1
+    - singledispatch >=3.4.0.3,<4
+    - singular >=4.1.0p3,<5
+    - six >=1.11.0,<2
+    - sqlite >=3.17,<4
+    - ssl_match_hostname >=3.5.0.1,<4
+    - symmetrica >=2.0,<3
+    - sympow >=1.018.1,<2
+    - sympy >=1.1.1,<2
+    - terminado >=0.6
+    - tornado >=4.3,<5
+    - traitlets >=4.3.1,<5
+    - wcwidth >=0.1.7
+    - widgetsnbextension >=2.0.0,<3
+    - zeromq >=4.0.5,<5
+    - zlib >=1.2.11,<2
+    - zn_poly >=0.9
 
     #- sagetex
     #- pillow
