@@ -75,7 +75,7 @@ requirements:
     - libgd >=2.1.1.1,<3
     - libiconv >=1.14,<2
     - libpng >=1.6.29,<2
-    - linbox >=1.4.2,<1.5
+    - linbox >=1.5.2,<1.6
     - lrcalc >=1.2,<2
     - m4ri >=20140914
     - m4rie >=20150908
