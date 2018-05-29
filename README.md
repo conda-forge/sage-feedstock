@@ -15,8 +15,8 @@ Creating a Viable Open Source Alternative to Magma, Maple, Mathematica, and MATL
 Current build status
 ====================
 
-![Linux disabled](https://img.shields.io/badge/linux-disabled-lightgrey.svg)
-![OSX disabled](https://img.shields.io/badge/OSX-disabled-lightgrey.svg)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/sage-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/sage-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/sage-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/sage-feedstock)
 ![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
