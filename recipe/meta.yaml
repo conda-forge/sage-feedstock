@@ -34,7 +34,7 @@ requirements:
     - configparser >=3.5.0,<4
     - cvxopt >=1.1.8,<2
     - cycler >=0.10.0
-    - cypari >=1.1.4,<2
+    - cypari2 >=1.1.4,<2
     - cysignals >=1.7.0,<2
     - cython >=0.28.1
     - decorator >=4.0.6,<5
