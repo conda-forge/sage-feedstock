@@ -116,7 +116,7 @@ requirements:
     - pyzmq >=17.0.0,<18
     - ratpoints >=2.1.3,<3
     # Sage uses 6.3 but our PARI and GAP use 6.2, see https://github.com/conda-forge/gap-feedstock/pull/11, https://github.com/conda-forge/pari-feedstock/pull/8
-    - readline >=6.3,<7
+    - readline >=6.2,<7
     - rpy2 >=2.8.2,<3
     - rubiks >=20070912
     - rw >=0.7
