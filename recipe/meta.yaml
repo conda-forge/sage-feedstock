@@ -79,7 +79,7 @@ requirements:
     - lrcalc >=1.2,<2
     - m4ri >=20140914
     - m4rie >=20150908
-    - matplotlib >=1.5.1,<2
+    - matplotlib >=2.1.0,<3
     - maxima >=5.39.0,<6
     - mistune >=0.7.3
     - mpc >=1.1.0,<2
