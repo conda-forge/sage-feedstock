@@ -15,14 +15,16 @@ Creating a Viable Open Source Alternative to Magma, Maple, Mathematica, and MATL
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/sage-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/sage-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/sage-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/sage-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/sage-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/sage-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/sage-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/sage-feedstock)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/sage/badges/version.svg)](https://anaconda.org/conda-forge/sage)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/sage/badges/downloads.svg)](https://anaconda.org/conda-forge/sage)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-sage-green.svg)](https://anaconda.org/conda-forge/sage) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sage.svg)](https://anaconda.org/conda-forge/sage) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sage.svg)](https://anaconda.org/conda-forge/sage) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sage.svg)](https://anaconda.org/conda-forge/sage) |
 
 Installing sage
 ===============
