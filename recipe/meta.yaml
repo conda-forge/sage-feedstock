@@ -65,6 +65,7 @@ requirements:
     - ipython_genutils >=0.2.0
     - ipywidgets >=7.1.1,<8
     - jinja2 >=2.10,<3
+    - jmol >=14.6.1,<15
     - jsonschema >=2.6.0,<3
     - jupyter_client >=5.2.2,<6
     - jupyter_core >=4.4.0,<5
@@ -141,6 +142,7 @@ requirements:
     - terminado >=0.8.1
     - tornado >=4.5.2,<5
     - traitlets >=4.3.2,<5
+    - twisted >=16.3.0,<17
     - wcwidth >=0.1.7
     - widgetsnbextension >=3.1.1,<4
     - zeromq >=4.0.5,<5
