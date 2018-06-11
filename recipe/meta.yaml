@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   skip: true  # [py!=27]
 
@@ -102,6 +102,7 @@ requirements:
     - pathlib2 >=2.3.0,<3
     - pexpect >=4.1.0,<5
     - pickleshare >=0.7.4
+    - pillow >=4.3.0,<5
     - planarity >=3.0.0.5,<4
     - ppl >=1.2,<2
     - prompt_toolkit >=1.0.15,<2
@@ -131,6 +132,7 @@ requirements:
     - singledispatch >=3.4.0.3,<4
     - singular >=4.1.0p3,<5
     - six >=1.11.0,<2
+    - sphinx >=1.6.3,<2
     - sqlite >=3.22,<4
     - ssl_match_hostname >=3.5.0.1,<4
     - symmetrica >=2.0,<3
