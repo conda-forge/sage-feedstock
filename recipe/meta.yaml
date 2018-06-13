@@ -6,9 +6,9 @@ package:
   version: {{ version }}
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
-  skip: true  # [py!=27]
+  skip: true  # [py3k and py<36]
 
 requirements:
   host:
@@ -113,7 +113,7 @@ requirements:
     - pygments >=2.2.0,<3
     - pynac >=0.7.16
     - pyparsing >=2.2.0,<3
-    - python   # [py==27]
+    - python
     - python-dateutil >=2.5.3,<3
     - pytz >=2017.3
     - pyzmq >=17.0.0,<18
