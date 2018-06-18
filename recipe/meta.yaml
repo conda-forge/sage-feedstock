@@ -18,7 +18,7 @@ requirements:
     # in their SPKGs. For packages that (seem to) use semantic versioning and
     # are at least 1.0.0, we limit the version to the next major release.
     - alabaster >=0.7.10
-    - appnope >=0.1.0  # [osx]
+    - appnope >=0.1.0                                   # [osx]
     - arb >=2.12.0,<3
     - babel >=2.3.4,<3
     - backports.functools_lru_cache >=1.4,<2            # [py27]
@@ -139,6 +139,7 @@ requirements:
     - symmetrica >=2.0,<3
     - sympow >=1.018.1,<2
     - sympy >=1.1.1,<2
+    - tachyon 0.99*
     - terminado >=0.8.1
     - tornado >=4.5.2,<5
     - traitlets >=4.3.2,<5
