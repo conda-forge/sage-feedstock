@@ -8,7 +8,7 @@ package:
 build:
   number: 3
   skip: true  # [win]
-  skip: true  # [py!=27]
+  skip: true  # [py3k and py<36]
 
 requirements:
   host:
@@ -101,7 +101,8 @@ requirements:
     - palp >=2.1,<3
     # Sage uses an unreleased 2.10 pre-release
     - pari >=2.9,<3
-    - path.py >=11,<12
+    # path.py 7 has not been built for Python3 on conda-forge, so we use the latest version
+    - path.py
     - pathlib2 >=2.3.0,<3
     - pexpect >=4.1.0,<5
     - pickleshare >=0.7.4
@@ -115,7 +116,7 @@ requirements:
     - pygments >=2.2.0,<3
     - pynac >=0.7.16
     - pyparsing >=2.2.0,<3
-    - python   # [py==27]
+    - python
     - python-dateutil >=2.5.3,<3
     - pytz >=2017.3
     - pyzmq >=17.0.0,<18
