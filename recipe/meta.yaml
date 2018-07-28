@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win]
   skip: true  # [py3k and py<36]
 
@@ -30,7 +30,7 @@ requirements:
     - brial >=1.0.1,<2
     # SageMath uses 0.94g but that does not seem to be packaged in conda-forge,
     # 0.94j does not have cdd_both_reps anymore
-    - cddlib >=0.94g,<0.94j
+    - cddlib >=1!0.94g,<1!0.94j
     - certifi >=2017.11.5
     - cliquer >=1.21,<2
     - configparser >=3.5.0,<4                           # [py27]
