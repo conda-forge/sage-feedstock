@@ -197,6 +197,7 @@ test:
   commands:
     - sage -v
     - sage -c 1+1
+    - echo exit | sage
 
 about:
   home: http://sagemath.org
