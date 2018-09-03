@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   skip: true  # [py3k and py<36]
 
@@ -41,7 +41,8 @@ requirements:
     - cython >=0.28.1
     - decorator >=4.0.6,<5
     - docutils >=0.14
-    - ecl >=16.1.2,<17
+    # ecl 16.1.3 causes unhandled SIGFPEs, see https://github.com/conda-forge/sagelib-feedstock/issues/44
+    - ecl >=16.1.2,<16.1.3
     - eclib >=20171002
     - ecm >=7.0.4,<8
     - entrypoints >=0.2.3
