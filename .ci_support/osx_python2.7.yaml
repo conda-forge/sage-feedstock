@@ -1,5 +1,13 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
+libblas:
+- 3.8 *netlib
+libcblas:
+- 3.8 *netlib
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
