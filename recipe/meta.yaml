@@ -24,7 +24,7 @@ requirements:
     - backports.functools_lru_cache >=1.5,<2            # [py27]
     - backports.shutil_get_terminal_size >=1.0.0,<2     # [py27]
     - backports_abc >=0.5                               # [py27]
-    - bdw-gc >=7.6.4,<8
+    - bdw-gc >=7.6.4,<9
     - bleach >=3.0.2,<4
     - boost-cpp
     - brial
