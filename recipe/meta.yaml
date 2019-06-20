@@ -125,7 +125,7 @@ requirements:
     - sagelib {{ version }}
     - sagemath-db-combinatorial-designs >=20140630
     - sagemath-db-conway-polynomials >=0.5
-    - sagemath-db-elliptic-curves >=0.8.1
+    - sagemath-db-elliptic-curves >=0.8
     - sagemath-db-graphs >=20161026
     - sagemath-db-polytopes >=20170220
     - sagenb >=1.1.2,<1.2
