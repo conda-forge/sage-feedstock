@@ -1,5 +1,5 @@
 {% set name = "sage" %}
-{% set version = "8.8" %}
+{% set version = "8.8.beta5" %}
 
 package:
   name: {{ name }}
@@ -26,7 +26,6 @@ requirements:
     - backports_abc >=0.5                               # [py27]
     - bdw-gc >=7.6.4,<9
     - bleach >=3.0.2,<4
-    - boost-cpp
     - brial
     - cddlib >=1!0.94j
     - certifi >=2018.11.29
@@ -81,7 +80,7 @@ requirements:
     - lrcalc
     - m4ri
     - m4rie
-    - matplotlib >=2.2.4,<3
+    - matplotlib-base >=2.2.4,<3
     - maxima >=5.42.2,<6
     - mistune >=0.8.4
     - mpc
@@ -129,6 +128,7 @@ requirements:
     - sagemath-db-graphs >=20161026
     - sagemath-db-polytopes >=20170220
     - sagenb >=1.1.2,<1.2
+    - sagetex >=3.2
     - scipy >=1.2.0
     - simplegeneric >=0.8.1
     - singledispatch >=3.4.0.3,<4
@@ -152,23 +152,21 @@ requirements:
     - zlib
     - zn_poly
 
-    #- sagetex
-
-    # docs
-    #- sphinx
-    #- snowballstemmer
-    #- imagesize
+    #- sagenb_export
 
     # dev
-    #- bzip2
     #- gcc
     #- git
 
     # build-time dependencies
     #- vcversioner
     #- setuptools_scm
+    #- boost-cpp
+    #- pkgconfig
 
 test:
+  requires:
+    - bc
   commands:
     - sage -v
     - sage -c 1+1
