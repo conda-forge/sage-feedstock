@@ -1,5 +1,5 @@
 {% set name = "sage" %}
-{% set version = "8.8.beta5" %}
+{% set version = "8.9.rc0" %}
 
 package:
   name: {{ name }}
@@ -28,33 +28,33 @@ requirements:
     - bleach >=3.0.2,<4
     - brial
     - cddlib >=1!0.94j
-    - certifi >=2018.11.29
+    - certifi >=2019.3.9
     - cliquer
-    - configparser >=3.5.0,<4                           # [py27]
+    - configparser >=3.7.3,<4                           # [py27]
     - cvxopt >=1.1.8,<2
     - cycler >=0.10.0
     - cypari2
     - cysignals
-    - cython >=0.29.5
-    - decorator >=4.3.0,<5
+    - cython >=0.29.12
+    - decorator >=4.4.0,<5
     - docutils >=0.14
     # ecl 16.1.3 causes unhandled SIGFPEs, see https://github.com/conda-forge/sagelib-feedstock/issues/44
     - ecl >=16.1.2,<16.1.3
     - eclib
     - ecm
-    - entrypoints >=0.2.3
-    - fflas-ffpack
+    - entrypoints >=0.3
+    - fflas-ffpack >=2.4.3
     - flintqs >=1.0,<2
     - fplll >=5.2.1,<6
     - fpylll >=0.4.1dev
     - freetype >=2.9.1,<3
     - functools32 >=3.2.3,<4                            # [py27]
     - future >=0.17.1
-    - gap-defaults
+    - gap-defaults >=4.10.2
     - gf2x >=1.2,<2
     - gfan >=0.6.2
-    - giac >=1.5.0.37,<2
-    - givaro >=4.0.4,<5
+    - giac >=1.5.0.63,<2
+    - givaro >=4.1.1,<5
     - glpk
     - gmp
     - gmpy2
@@ -76,7 +76,7 @@ requirements:
     - libhomfly
     - libiconv >=1.15,<2
     - libpng
-    - linbox
+    - linbox >=1.6.3
     - lrcalc
     - m4ri
     - m4rie
@@ -101,6 +101,7 @@ requirements:
     - path.py >=7
     - pathlib2 >=2.3.3,<3
     - pexpect >=4.6.0,<5
+    - pkgconfig
     - pickleshare >=0.7.5
     - pillow >=5.3.0,<6
     - planarity
@@ -110,12 +111,12 @@ requirements:
     - psutil >=5.2.0,<6
     - ptyprocess >=0.5.1
     - pygments >=2.3.1,<3
-    - pynac
+    - pynac >=0.7.26,<0.8
     - pyparsing >=2.3.0,<3
     - python
     - python-dateutil >=2.5.3,<3
     - pytz >=2018.7
-    - pyzmq >=17.1.2,<18
+    - pyzmq >=18.1.0,<19
     - ratpoints
     - readline
     - rpy2 >=2.8.2,<3
@@ -128,7 +129,7 @@ requirements:
     - sagemath-db-graphs >=20161026
     - sagemath-db-polytopes >=20170220
     - sagenb >=1.1.2,<1.2
-    - sagetex >=3.2
+    - sagetex >=3.3
     - scipy >=1.2.0
     - simplegeneric >=0.8.1
     - singledispatch >=3.4.0.3,<4
@@ -138,11 +139,11 @@ requirements:
     - sqlite >=3.22,<4
     - ssl_match_hostname >=3.5.0.1,<4                   # [py27]
     - symmetrica
-    - sympow >=1.018.1,<2
+    - sympow >=2.023.3,<3
     - sympy >=1.4,<2
     - tachyon 0.99.*
     - terminado >=0.8.1
-    - three.js 100
+    - three.js 105
     - tornado >=4.5.2,<5
     - traitlets >=4.3.2,<5
     - twisted >=18.4.0,<19
