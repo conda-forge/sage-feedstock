@@ -168,6 +168,7 @@ requirements:
 test:
   requires:
     - bc
+    - git
   commands:
     - sage -v
     - sage -c 1+1
