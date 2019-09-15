@@ -119,7 +119,7 @@ requirements:
     - pyzmq >=18.1.0,<19
     - ratpoints
     - readline
-    - rpy2 >=2.8.2,<3
+    - rpy2 >=2.8.6,<4
     - rubiks >=20070912
     - rw
     - sagelib {{ version }}
