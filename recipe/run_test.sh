@@ -1,16 +1,19 @@
-git clone https://github.com/sagemath/sage.git sagemath
+git clone https://github.com/sagemath/sage.git -b ${PKG_VERSION} --depth 1 sagemath
 cd sagemath
-git checkout ${PKG_VERSION}
 ln -s $PREFIX local
 
 export SAGE_LOCAL=$PWD/local
 export SAGE_ROOT=$PWD
-export CFLAGS="$CFLAGS -I/usr/include"
-export CXXFLAGS="$CXXFLAGS -I/usr/include"
-export CPPFLAGS="$CPPFLAGS -I/usr/include"
 ls $SAGE_ROOT
 ls $SAGE_LOCAL
 rm "$SAGE_LOCAL/lib/sage-current-location.txt"
+
+export SAGE_NUM_THREADS_PARALLEL=$CPU_COUNT
+export SAGE_NUM_THREADS=$CPU_COUNT
+
+rm -rf $SAGE_LOCAL/bin/sage-env
+echo '#!/bin/bash' > $SAGE_LOCAL/bin/sage-env
+chmod +x $SAGE_LOCAL/bin/sage-env
 
 (sage -tp --initial --all --optional=memlimit,sage | tee doctest.txt) || true
 
