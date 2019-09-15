@@ -155,6 +155,8 @@ requirements:
     - zn_poly
 
     #- sagenb_export
+    # required for sage.misc.package.pip_installed_packages
+    - pip
 
     # dev
     #- gcc
