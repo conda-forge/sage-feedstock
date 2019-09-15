@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   skip: true  # [py3k and py<36]
 
@@ -151,6 +151,9 @@ requirements:
     - zeromq >=4.2.5,<5
     - zlib
     - zn_poly
+
+    # required for sage.misc.package.pip_installed_packages
+    - pip
 
     #- sagetex
 
