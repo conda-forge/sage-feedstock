@@ -1,3 +1,5 @@
+set -x
+
 git clone https://github.com/sagemath/sage.git -b ${PKG_VERSION} --depth 1 sagemath
 cd sagemath
 ln -s $PREFIX local

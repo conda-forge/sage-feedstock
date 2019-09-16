@@ -101,6 +101,7 @@ requirements:
     - path.py >=7
     - pathlib2 >=2.3.3,<3
     - pexpect >=4.6.0,<5
+    - pkg-config
     - pkgconfig
     - pickleshare >=0.7.5
     - pillow >=5.3.0,<6
