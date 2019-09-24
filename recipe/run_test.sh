@@ -13,10 +13,6 @@ rm "$SAGE_LOCAL/lib/sage-current-location.txt"
 export SAGE_NUM_THREADS_PARALLEL=$CPU_COUNT
 export SAGE_NUM_THREADS=$CPU_COUNT
 
-rm -rf $SAGE_LOCAL/bin/sage-env
-echo '#!/bin/bash' > $SAGE_LOCAL/bin/sage-env
-chmod +x $SAGE_LOCAL/bin/sage-env
-
 set +e
 sage -tp --initial --all --optional=memlimit,sage | tee doctest.txt
 
