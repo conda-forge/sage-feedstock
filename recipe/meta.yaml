@@ -1,5 +1,5 @@
 {% set name = "sage" %}
-{% set version = "8.9.rc1" %}
+{% set version = "8.9" %}
 
 package:
   name: {{ name }}
