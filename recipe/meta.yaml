@@ -1,5 +1,5 @@
 {% set name = "sage" %}
-{% set version = "9.0.rc1" %}
+{% set version = "9.0" %}
 
 package:
   name: {{ name }}
@@ -96,7 +96,7 @@ requirements:
     - ntl
     - numpy
     - palp >=2.1,<3
-    - pari
+    - pari >=2.11.2
     # path.py 7 has not been built for Python3 on conda-forge, so we use the latest version
     - path.py >=7
     - pathlib2 >=2.3.3,<3
