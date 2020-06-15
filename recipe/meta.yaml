@@ -1,5 +1,5 @@
 {% set name = "sage" %}
-{% set version = "9.0" %}
+{% set version = "9.1" %}
 
 package:
   name: {{ name }}
@@ -144,7 +144,7 @@ requirements:
     - sympy >=1.4,<2
     - tachyon 0.99.*
     - terminado >=0.8.1
-    - three.js 105
+    - three.js 110
     - tornado >=4.5.2,<5
     - traitlets >=4.3.2,<5
     - twisted >=18.4.0,<19
