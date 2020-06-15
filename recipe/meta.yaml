@@ -1,5 +1,5 @@
 {% set name = "sage" %}
-{% set version = "9.0" %}
+{% set version = "9.1" %}
 
 package:
   name: {{ name }}
@@ -141,10 +141,13 @@ requirements:
     - ssl_match_hostname >=3.5.0.1,<4                   # [py27]
     - symmetrica
     - sympow >=2.023.3,<3
+    {% if version == "9.1" %}
+    - sympy <1.6
+    {% endif %}
     - sympy >=1.4,<2
     - tachyon 0.99.*
     - terminado >=0.8.1
-    - three.js 105
+    - three.js 110
     - tornado >=4.5.2,<5
     - traitlets >=4.3.2,<5
     - twisted >=18.4.0,<19
