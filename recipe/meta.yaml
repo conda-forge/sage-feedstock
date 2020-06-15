@@ -141,6 +141,9 @@ requirements:
     - ssl_match_hostname >=3.5.0.1,<4                   # [py27]
     - symmetrica
     - sympow >=2.023.3,<3
+    {% if version == "9.1" %}
+    - sympy <1.6
+    {% endif %}
     - sympy >=1.4,<2
     - tachyon 0.99.*
     - terminado >=0.8.1
