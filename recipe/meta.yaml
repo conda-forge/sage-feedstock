@@ -8,7 +8,7 @@ package:
 build:
   number: 1
   skip: true  # [win]
-  skip: true  # [py3k and py<36]
+  skip: true  # [py3k and (py<36 or py>37)]
 
 requirements:
   host:
