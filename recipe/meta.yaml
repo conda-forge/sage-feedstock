@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   skip: true  # [py3k and py<36]
 
@@ -148,7 +148,7 @@ requirements:
     - tachyon 0.99.*
     - terminado >=0.8.1
     - three.js 110
-    - tornado >=4.5.2,<5
+    - tornado >=4.5.2,<7
     - traitlets >=4.3.2,<5
     - twisted >=18.4.0,<19
     - wcwidth >=0.1.7
