@@ -5,16 +5,18 @@
 jobs:
 - job: osx
   pool:
-    vmImage: macOS-10.14
+    vmImage: macOS-10.15
   strategy:
     matrix:
-      osx_python3.6.____cpython:
-        CONFIG: osx_python3.6.____cpython
+      osx_64_python3.6.____cpythontarget_platformosx-64:
+        CONFIG: osx_64_python3.6.____cpythontarget_platformosx-64
         UPLOAD_PACKAGES: 'True'
-      osx_python3.7.____cpython:
-        CONFIG: osx_python3.7.____cpython
+      osx_64_python3.7.____cpythontarget_platformosx-64:
+        CONFIG: osx_64_python3.7.____cpythontarget_platformosx-64
         UPLOAD_PACKAGES: 'True'
-    maxParallel: 8
+      osx_64_python3.8.____cpythontarget_platformosx-64:
+        CONFIG: osx_64_python3.8.____cpythontarget_platformosx-64
+        UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
 
   steps:
