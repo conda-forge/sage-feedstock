@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
   skip: true  # [py3k and (py<36 or py>37)]
 
