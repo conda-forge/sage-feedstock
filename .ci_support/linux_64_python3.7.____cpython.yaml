@@ -3,7 +3,7 @@ cdt_name:
 channel_sources:
 - conda-forge/label/sagedev,conda-forge,defaults
 channel_targets:
-- conda-forge sagedev
+- conda-forge main
 docker_image:
 - condaforge/linux-anvil-comp7
 pin_run_as_build:
