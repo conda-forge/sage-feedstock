@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   skip: true  # [py2k or (py3k and py<36)]
 
@@ -81,7 +81,7 @@ requirements:
     - mpfr
     - mpmath >=1.1.0,<2
     - nauty >=2.7r1,<3
-    - nbconvert >=5.6.1,<6
+    - nbconvert >=5.6.1,<7
     - nbformat >=5.0.7,<6
     - ncurses >=6.0,<7
     - networkx >=2.4,<3
@@ -135,7 +135,7 @@ requirements:
     - terminado >=0.8.3
     - three.js 117
     - tornado >=6.0.4,<7
-    - traitlets >=4.3.2,<5
+    - traitlets >=4.3.2,<6
     - wcwidth >=0.1.7,<2
     - widgetsnbextension >=3.5.1,<4
     - zeromq >=4.2.5,<5
