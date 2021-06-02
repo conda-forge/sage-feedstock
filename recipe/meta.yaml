@@ -107,7 +107,7 @@ requirements:
     - python
     - python-dateutil >=2.8.1,<3
     - pytz >=2020.4
-    - pyzmq >=19.0.2,<20
+    - pyzmq >=19.0.2
     - ratpoints
     - readline
     - rpy2 >=3.3.6,<4
