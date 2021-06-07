@@ -162,6 +162,7 @@ test:
 about:
   home: http://sagemath.org
   license: GPL-2.0-or-later
+  license_file: COPYING.txt
   summary: 'Sage - Open Source Mathematical Software'
   description: |
     Creating a Viable Open Source Alternative to Magma, Maple, Mathematica, and MATLAB.
