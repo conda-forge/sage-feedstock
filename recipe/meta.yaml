@@ -6,19 +6,15 @@ package:
   version: {{ version }}
 
 build:
-  number: 1
-  skip: true  # [win]
-  skip: true  # [py2k or (py3k and py<36)]
+  number: 0
+  noarch: python
 
 requirements:
-  host:
-    - python
   run:
     # We require all dependencies with at least that version that upstream uses
     # in their SPKGs. For packages that (seem to) use semantic versioning and
     # are at least 1.0.0, we limit the version to the next major release.
     - alabaster >=0.7.12
-    - appnope >=0.1.0                                   # [osx]
     - arb
     - babel >=2.6.0,<3
     - bdw-gc >=8.0.4,<9
