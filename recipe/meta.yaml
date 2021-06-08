@@ -18,6 +18,7 @@ requirements:
     - arb
     - babel >=2.6.0,<3
     - bdw-gc >=8.0.4,<9
+    - blas-devel
     - bleach >=3.1.5,<4
     - brial
     - cddlib >=1!0.94m
