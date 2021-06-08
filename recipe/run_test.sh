@@ -18,7 +18,7 @@ set +e
 sage -tp --initial --all --optional=memlimit,sage | tee doctest.txt
 
 cat doctest.txt | grep '^sage -t ' | grep '#' > doctest.summary.txt
-echo `cat doctest.summary.txt | awk '{ print $5 }' | sort | grep -E '[0-9]+' | paste -sd+ | bc` failing individual doctests
-cat doctest.summary.txt | awk '{ print $5 }' | sort | grep -vE '[0-9]+' | sort | uniq -c
+echo `cat doctest.summary.txt | awk '{ print $6 }' | sort | grep -E '[0-9]+' | paste -sd+ | bc` failing individual doctests
+cat doctest.summary.txt | awk '{ print $6 }' | sort | grep -vE '[0-9]+' | sort | uniq -c
 
 set -e
