@@ -64,8 +64,8 @@ else
     validate_recipe_outputs "${FEEDSTOCK_NAME}"
 
     ( endgroup "Validating outputs" ) 2> /dev/null
-    # we are building with mambabuild, but don't error because conda-build doesn't work
-    # exit 1
+    # we are building with mambabuild, so exit with an error code for now
+    exit 1
 
     ( startgroup "Uploading packages" ) 2> /dev/null
 
