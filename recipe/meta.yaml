@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 0
+  number: 1
   noarch: generic
 
 requirements:
@@ -155,6 +155,7 @@ test:
   requires:
     - bc
     - git
+    - patch
   commands:
     - sage -v
     - sage -c 1+1
