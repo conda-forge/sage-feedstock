@@ -4,13 +4,13 @@ git clone https://github.com/sagemath/sage.git -b ${PKG_VERSION} --depth 1 sagem
 cd sagemath
 
 # Apply patches from sagelib-feedstock
-git clone https://github.com/conda-forge/sagelib-feedstock.git
-pushd sagelib-feedstock
-  git reset --hard 4c236cdf6b42b1ab1100e03d98f71cfbd71861f1
-popd
-for p in `grep -v '#' sagelib-feedstock/recipe/patches/series`;do
-    patch -p1 < ./sagelib-feedstock/recipe/patches/"$p"
-done
+# git clone https://github.com/conda-forge/sagelib-feedstock.git
+# pushd sagelib-feedstock
+#   git reset --hard 4c236cdf6b42b1ab1100e03d98f71cfbd71861f1
+# popd
+# for p in `grep -v '#' sagelib-feedstock/recipe/patches/series`;do
+#     patch -p1 < ./sagelib-feedstock/recipe/patches/"$p"
+# done
 
 ln -s $PREFIX local
 
