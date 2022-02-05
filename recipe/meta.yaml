@@ -129,7 +129,7 @@ requirements:
     - sympow >=2.023.6,<3
     - sympy >=1.9,<2
     - tachyon 0.99.*
-    - terminado >=0.8.3
+    - terminado >=0.12.1
     - three.js 122
     - tornado >=6.0.4,<7
     - traitlets >=4.3.3,<6
