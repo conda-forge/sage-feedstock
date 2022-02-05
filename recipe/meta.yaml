@@ -135,7 +135,7 @@ requirements:
     - tornado >=6.1,<7
     - traitlets >=5.1.1,<6
     - wcwidth >=0.2.5,<2
-    - widgetsnbextension >=3.5.1,<4
+    - widgetsnbextension >=3.5.2,<4
     - zeromq >=4.2.5,<5
     - zlib
     - zn_poly
