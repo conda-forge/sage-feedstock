@@ -104,6 +104,7 @@ requirements:
     - pyparsing >=3.0.6,<4
     - python >=3.7
     - python-dateutil >=2.8.2,<3
+    - pythran >=0.10.0,<0.11
     - pytz >=2020.4
     - pyzmq >=22.0.3
     - ratpoints
