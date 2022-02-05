@@ -51,7 +51,7 @@ requirements:
     - gsl
     - iml
     - ipykernel >=6.6.0,<7
-    - ipython >=7.16.1,<8
+    - ipython >=7.29,<8
     - ipython_genutils >=0.2.0
     - ipywidgets >=7.6.3,<8
     - jinja2
