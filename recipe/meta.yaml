@@ -78,6 +78,7 @@ requirements:
     - mpfr
     - mpmath >=1.2.1,<2
     - nauty >=2.7r1,<3
+    - nbclient >=0.5.9,<0.6
     - nbconvert >=5.6.1,<7
     - nbformat >=5.0.7,<6
     - ncurses >=6.0,<7
