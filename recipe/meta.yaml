@@ -119,7 +119,7 @@ requirements:
     - sagemath-db-graphs >=20210214
     - sagemath-db-polytopes >=20170220
     - sagetex >=3.5
-    - scipy >=1.6.3
+    - scipy >=1.7.2
     - simplegeneric >=0.8.1,<1
     - singular
     - six >=1.15.0,<2
