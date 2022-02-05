@@ -87,7 +87,7 @@ requirements:
     - ntl
     - numpy
     - palp >=2.11,<3
-    - pari >=2.13.1,<3
+    - pari >=2.13.3,<3
     - pexpect >=4.8.0,<5
     - pkg-config
     - pkgconfig
