@@ -131,7 +131,7 @@ requirements:
     - tachyon 0.99.*
     - terminado >=0.12.1
     - three.js 122
-    - tornado >=6.0.4,<7
+    - tornado >=6.1,<7
     - traitlets >=4.3.3,<6
     - wcwidth >=0.1.7,<2
     - widgetsnbextension >=3.5.1,<4
