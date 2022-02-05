@@ -92,7 +92,7 @@ requirements:
     - pkg-config
     - pkgconfig
     - pickleshare >=0.7.5,<1.0
-    - pillow >=8.1.2,<9
+    - pillow >=8.4.0,<9
     - planarity
     - ppl
     - pplpy 
