@@ -96,6 +96,7 @@ requirements:
     - planarity
     - ppl
     - pplpy 
+    - primecountpy >=0.1.0,<0.2.0
     - prompt_toolkit >=3.0.22,<4
     - psutil >=5.2.0,<6
     - ptyprocess >=0.5.1,<1
