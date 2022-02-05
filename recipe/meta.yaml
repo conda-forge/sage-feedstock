@@ -101,7 +101,7 @@ requirements:
     - ptyprocess >=0.5.1,<1
     - pygments >=2.10.0,<3
     - pynac >=0.7.29,<0.8
-    - pyparsing >=2.4.7,<3
+    - pyparsing >=3.0.6,<4
     - python >=3.7
     - python-dateutil >=2.8.2,<3
     - pytz >=2020.4
