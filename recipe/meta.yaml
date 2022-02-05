@@ -70,7 +70,7 @@ requirements:
     - lrcalc
     - m4ri
     - m4rie
-    - matplotlib-base >=3.3.4,<4
+    - matplotlib-base >=3.5.1,<4
     - maxima >=5.45.0,<6
     - mistune >=0.8.4
     - mpc
