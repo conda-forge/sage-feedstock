@@ -124,7 +124,7 @@ requirements:
     - singular
     - six >=1.16.0,<2
     - sphinx >=4.2.0,<5
-    - sqlite >=3.29,<4
+    - sqlite >=3.36,<4
     - symmetrica
     - sympow >=2.023.6,<3
     - sympy >=1.8,<2
