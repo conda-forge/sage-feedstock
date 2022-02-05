@@ -123,7 +123,7 @@ requirements:
     - simplegeneric >=0.8.1,<1
     - singular
     - six >=1.16.0,<2
-    - sphinx >=4.0.1,<5
+    - sphinx >=4.2.0,<5
     - sqlite >=3.29,<4
     - symmetrica
     - sympow >=2.023.6,<3
