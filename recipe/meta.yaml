@@ -57,7 +57,7 @@ requirements:
     - jinja2
     - jmol >=14.29.52,<15
     - jsonschema >=3.2.0,<4
-    - jupyter_client >=6.1.6,<7
+    - jupyter_client >=7.1.0,<8
     - jupyter_core
     - lcalc
     - libbraiding
