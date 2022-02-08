@@ -1,5 +1,5 @@
 {% set name = "sage" %}
-{% set version = "9.4" %}
+{% set version = "9.5" %}
 
 package:
   name: {{ name }}
@@ -24,11 +24,11 @@ requirements:
     - cddlib >=1!0.94m
     - certifi
     - cliquer
-    - cvxopt >=1.2.6,<2
-    - cycler >=0.10.0
+    - cvxopt >=1.2.7,<2
+    - cycler >=0.11.0
     - cypari2
     - cysignals
-    - cython >=0.29.21
+    - cython >=0.29.24
     - decorator >=4.4.2,<5
     - docutils >=0.17.1
     - ecl >=21.2.1,<21.2.2.a0
@@ -50,14 +50,14 @@ requirements:
     - gmpy2
     - gsl
     - iml
-    - ipykernel >=5.2.1,<6
-    - ipython >=7.16.1,<8
+    - ipykernel >=6.6.0,<7
+    - ipython >=7.29,<8
     - ipython_genutils >=0.2.0
-    - ipywidgets >=7.6.3,<8
+    - ipywidgets >=7.6.5,<8
     - jinja2
     - jmol >=14.29.52,<15
     - jsonschema >=3.2.0,<4
-    - jupyter_client >=6.1.6,<7
+    - jupyter_client >=7.1.0,<8
     - jupyter_core
     - lcalc
     - libbraiding
@@ -70,7 +70,7 @@ requirements:
     - lrcalc
     - m4ri
     - m4rie
-    - matplotlib-base >=3.3.4,<4
+    - matplotlib-base >=3.5.1,<4
     - maxima >=5.45.0,<6
     - mistune >=0.8.4
     - mpc
@@ -78,33 +78,36 @@ requirements:
     - mpfr
     - mpmath >=1.2.1,<2
     - nauty >=2.7r1,<3
-    - nbconvert >=5.6.1,<7
-    - nbformat >=5.0.7,<6
+    - nbclient >=0.5.9,<0.6
+    - nbconvert >=6.1.0,<7
+    - nbformat >=5.1.3,<6
     - ncurses >=6.0,<7
-    - networkx >=2.5.1,<3
-    - notebook >=6.1.1,<7
+    - networkx >=2.6.3,<3
+    - notebook >=6.4.6,<7
     - ntl
     - numpy
     - palp >=2.11,<3
-    - pari >=2.13.1,<3
+    - pari >=2.13.3,<3
     - pexpect >=4.8.0,<5
     - pkg-config
     - pkgconfig
     - pickleshare >=0.7.5,<1.0
-    - pillow >=8.1.2,<9
+    - pillow >=8.4.0,<9
     - planarity
     - ppl
     - pplpy 
-    - prompt_toolkit >=3.0.5,<4
+    - primecountpy >=0.1.0,<0.2.0
+    - prompt_toolkit >=3.0.22,<4
     - psutil >=5.2.0,<6
     - ptyprocess >=0.5.1,<1
-    - pygments >=2.3.1,<3
+    - pygments >=2.10.0,<3
     - pynac >=0.7.29,<0.8
-    - pyparsing >=2.4.7,<3
+    - pyparsing >=3.0.6,<4
     - python >=3.7
-    - python-dateutil >=2.8.1,<3
-    - pytz >=2020.4
-    - pyzmq >=22.0.3
+    - python-dateutil >=2.8.2,<3
+    - pythran >=0.10.0,<0.11
+    - pytz >=2021.3
+    - pyzmq >=22.3.0,<23
     - ratpoints
     - readline
     - rpy2 >=3.3.6,<4
@@ -117,23 +120,23 @@ requirements:
     - sagemath-db-graphs >=20210214
     - sagemath-db-polytopes >=20170220
     - sagetex >=3.5
-    - scipy >=1.6.3
+    - scipy >=1.7.2
     - simplegeneric >=0.8.1,<1
     - singular
-    - six >=1.15.0,<2
-    - sphinx >=4.0.1,<5
-    - sqlite >=3.29,<4
+    - six >=1.16.0,<2
+    - sphinx >=4.2.0,<5
+    - sqlite >=3.36,<4
     - symmetrica
     - sympow >=2.023.6,<3
-    - sympy >=1.8,<2
+    - sympy >=1.9,<2
     - tachyon 0.99.*
-    - terminado >=0.8.3
+    - terminado >=0.12.1
     - three.js 122
-    - tornado >=6.0.4,<7
-    - traitlets >=4.3.3,<6
-    - wcwidth >=0.1.7,<2
-    - widgetsnbextension >=3.5.1,<4
-    - zeromq >=4.2.5,<5
+    - tornado >=6.1,<7
+    - traitlets >=5.1.1,<6
+    - wcwidth >=0.2.5,<2
+    - widgetsnbextension >=3.5.2,<4
+    - zeromq >=4.3.4,<5
     - zlib
     - zn_poly
 
