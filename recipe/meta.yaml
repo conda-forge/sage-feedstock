@@ -1,12 +1,12 @@
 {% set name = "sage" %}
-{% set version = "9.5" %}
+{% set version = "9.6" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 build:
-  number: 2
+  number: 0
   noarch: generic
 
 requirements:
