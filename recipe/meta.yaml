@@ -1,4 +1,4 @@
-{% set name = "sage" %}
+{% set name = "sage-sirocco" %}
 {% set version = "9.6" %}
 
 package:
