@@ -52,7 +52,6 @@ requirements:
     - iml
     - ipykernel >=6.6.0,<7
     - ipython >=8.4.0,<9
-    - ipython_genutils >=0.2.0
     - ipywidgets >=7.7.0,<8
     - jinja2
     - jmol >=14.29.52,<15
@@ -97,7 +96,6 @@ requirements:
     - ppl
     - pplpy 
     - primecountpy >=0.1.0,<0.2.0
-    - prompt_toolkit >=3.0.24,<4
     - psutil >=5.2.0,<6
     - ptyprocess >=0.5.1,<1
     - pygments >=2.12.0,<3
