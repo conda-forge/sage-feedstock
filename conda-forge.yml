@@ -6,3 +6,5 @@ build_with_mambabuild: true
 github:
   branch_name: main
   tooling_branch_name: main
+conda_build:
+  pkg_format: '2'
