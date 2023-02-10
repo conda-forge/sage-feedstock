@@ -169,9 +169,10 @@ about:
   description: |
     Creating a Viable Open Source Alternative to Magma, Maple, Mathematica, and MATLAB.
   doc_url: https://doc.sagemath.org/
-  dev_url: https://trac.sagemath.org
+  dev_url: https://github.com/sagemath/sage
 
 extra:
   recipe-maintainers:
     - isuruf
     - saraedum
+    - alexjbest

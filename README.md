@@ -9,7 +9,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sage-feedstock/
 
 Summary: Sage - Open Source Mathematical Software
 
-Development: https://trac.sagemath.org
+Development: https://github.com/sagemath/sage
 
 Documentation: https://doc.sagemath.org/
 
@@ -150,6 +150,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@alexjbest](https://github.com/alexjbest/)
 * [@isuruf](https://github.com/isuruf/)
 * [@saraedum](https://github.com/saraedum/)
 
