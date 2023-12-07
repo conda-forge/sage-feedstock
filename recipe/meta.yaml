@@ -117,7 +117,7 @@ requirements:
     - sagetex >=3.6.1,<4
     - scipy >=1.11.3,<2
     - simplegeneric >=0.8.1,<1
-    - singular
+    - singular >=4.3.2p8,<4.4
     - six >=1.16.0,<2
     - sphinx >=5.2.3,<6
     - sqlite >=3.36,<4
