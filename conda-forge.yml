@@ -1,7 +1,7 @@
 build_platform: {osx_arm64: osx_64}
 conda_forge_output_validation: true
 provider: {linux_aarch64: default}
-build_with_mambabuild: true
+conda_build_tool: mamba
 github:
   branch_name: main
   tooling_branch_name: main
