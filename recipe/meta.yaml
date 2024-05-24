@@ -24,6 +24,7 @@ requirements:
     - cddlib >=1!0.94m
     - certifi
     - cliquer
+    - conway-polynomials >=0.8
     - cvxopt >=1.3.2,<2
     - cycler >=0.11.0
     - cypari2
@@ -110,7 +111,6 @@ requirements:
     - rw
     - sagelib {{ version }}
     - sagemath-db-combinatorial-designs >=20140630
-    - sagemath-db-conway-polynomials >=0.8
     - sagemath-db-elliptic-curves >=0.8.1
     - sagemath-db-graphs >=20210214
     - sagemath-db-polytopes >=20170220
