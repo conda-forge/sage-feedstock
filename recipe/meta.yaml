@@ -89,10 +89,10 @@ requirements:
     - palp >=2.11,<3
     - pari >=2.15.4,<3
     - pexpect >=4.9.0,<5
-    - pkg-config
-    - pkgconfig
     - pickleshare >=0.7.5,<1.0
     - pillow >=10.1.0,<11
+    - pkg-config
+    - pkgconfig
     - planarity
     - ppl
     - pplpy 
