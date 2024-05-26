@@ -19,9 +19,7 @@ export SAGE_ROOT=$PWD
 ls $SAGE_ROOT
 ls $SAGE_LOCAL
 echo $SAGE_ROOT > "$SAGE_LOCAL/lib/sage-current-location.txt"
-sed -i.bak "s@SAGE_ROOT=\"$PREFIX\"@SAGE_ROOT=\"$SAGE_ROOT\"@g" $PREFIX/bin/sage-env-config
 
-export SAGE_NUM_THREADS_PARALLEL=$CPU_COUNT
 export SAGE_NUM_THREADS=$CPU_COUNT
 
 set +e
