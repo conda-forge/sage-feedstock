@@ -117,7 +117,8 @@ requirements:
     - sagetex >=3.6.1,<4
     - scipy >=1.12.0,<2
     - simplegeneric >=0.8.1,<1
-    - singular >=4.4.0,<4.5
+    # We do not pin singular. It has a global pin in the conda-forge-pinning-feedstock
+    - singular
     - six >=1.16.0,<2
     - sphinx >=7.2.6,<8
     - sqlite >=3.36,<4
