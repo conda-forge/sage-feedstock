@@ -1,5 +1,5 @@
 {% set name = "sage" %}
-{% set version = "10.4" %}
+{% set version = "10.5" %}
 
 package:
   name: {{ name }}
