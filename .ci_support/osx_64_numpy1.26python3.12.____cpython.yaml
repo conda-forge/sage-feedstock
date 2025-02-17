@@ -55,7 +55,7 @@ ntl:
 numpy:
 - '1.26'
 pari:
-- 2.15.* *_pthread
+- 2.17.* *_pthread
 pin_run_as_build:
   python:
     min_pin: x.x
