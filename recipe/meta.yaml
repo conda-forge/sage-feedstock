@@ -15,7 +15,6 @@ requirements:
     # in their SPKGs. For packages that (seem to) use semantic versioning and
     # are at least 1.0.0, we limit the version to the next major release.
     - alabaster >=0.7.16
-    - arb
     - babel >=2.14.0,<3
     - bdw-gc >=8.0.4,<9
     - blas-devel
