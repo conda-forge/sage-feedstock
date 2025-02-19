@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 1
+  number: 2
   noarch: generic
 
 requirements:
@@ -28,14 +28,14 @@ requirements:
     - cycler >=0.11.0
     - cypari2
     - cysignals
-    - cython >=3,<4
+    - cython
     - decorator >=5.1.1,<6
     - docutils >=0.20.1
-    - ecl >=24.5.10,<25
+    - ecl
     - eclib
     - ecm
     - entrypoints >=0.4
-    - fflas-ffpack >=2.5.0
+    - fflas-ffpack
     - flintqs >=1.0,<2
     - fplll >=5.4.5,<6
     - fpylll >=0.6.0
@@ -43,21 +43,21 @@ requirements:
     - gap-defaults >=4.12.2
     - gf2x >=1.3,<2
     - gfan >=0.6.2
-    - giac >=1.9.0.15,<2
-    - givaro >=4.1.1,<5
+    - giac
+    - givaro
     - glpk
     - gmp
     - gmpy2
     - gsl
     - iml
     - ipykernel >=6.6.0,<7
-    - ipython >=8.18.1,<9
+    - ipython >=8.18.1,<9  # TODO: Remove the version pin with the next sagelib upgrade; it's in the sagelib recipe now
     - ipywidgets >=8.1.1,<9
     - jinja2
     - jmol >=14.29.52,<15
     - jsonschema >=4.17.3,<5
     - jupyter_client >=8.3.1,<9
-    - jupyter_core >=5.3.2,<6
+    - jupyter_core
     - lcalc
     - libbraiding
     - libflint
@@ -65,8 +65,8 @@ requirements:
     - libhomfly
     - libiconv >=1.15,<2
     - libpng
-    - linbox >=1.7.0
-    - lrcalc >=2.1,<3
+    - linbox
+    - lrcalc
     - m4ri
     - m4rie
     - matplotlib-base >=3.8.0,<4
@@ -86,8 +86,8 @@ requirements:
     - ntl
     - numpy
     - palp >=2.11,<3
-    - pari >=2.15.4,<3
-    - pexpect >=4.9.0,<5
+    - pari >=2.15.4
+    - pexpect
     - pickleshare >=0.7.5,<1.0
     - pillow >=10.1.0,<11
     - pkg-config
@@ -95,7 +95,7 @@ requirements:
     - planarity
     - ppl
     - pplpy 
-    - primecountpy >=0.1.0,<0.2.0
+    - primecountpy >=0.1.0,<0.2.0  # TODO: Remove the version pin with the next sagelib upgrade; it's in the sagelib recipe now
     - ptyprocess >=0.7.0,<1
     - pygments >=2.18.0,<3
     - pyparsing >=3.1.1,<4
