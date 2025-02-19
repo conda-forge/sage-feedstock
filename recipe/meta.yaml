@@ -66,7 +66,6 @@ requirements:
     - sagemath-db-polytopes >=20170220
     - sagetex >=3.6.1,<4
     - scipy >=1.12.0,<2
-    - simplegeneric >=0.8.1,<1  # TODO: This can be removed. It was just a dependency of ipython at some point.
     - sphinx >=7.2.6,<8
     - sqlite >=3.36,<4
     - sympow >=2.023.6,<3
@@ -75,7 +74,6 @@ requirements:
     - terminado >=0.17.1  # TODO: Do we need this for anything or is it just a dependency for Jupyter in the SageMath distribution?
     - tornado >=6.4,<7A  # TODO: Do we need this for anything or is it just a dependency for matplotlib in the SageMath distribution?
     - widgetsnbextension >=4.0.9,<5
-    - zeromq >=4.3.5,<5  # TODO: This can be removed. It gets pulled in by pyzmq.
     - zn_poly
 
     #- sagenb_export
