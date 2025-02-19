@@ -14,17 +14,17 @@ requirements:
     # We require all dependencies with at least that version that upstream uses
     # in their SPKGs. For packages that (seem to) use semantic versioning and
     # are at least 1.0.0, we limit the version to the next major release.
-    - alabaster >=0.7.16
-    - babel >=2.14.0,<3
+    - alabaster >=0.7.16  # TODO: Do we actually need this for anything or is it just a dependency of sphinx in the SageMath distribution?
+    - babel >=2.14.0,<3  # TODO: Do we actually need this for anything or is it just a dependency of sphinx in the SageMath distribution?
     - blas-devel
-    - bleach >=6.1.0,<7
-    - certifi
+    - bleach >=6.1.0,<7  # TODO: Do we actually need this for anything or is it just a dependency of nbconvert in the SageMath distribution?
+    - certifi  # TODO: Do we actually need this for anything or is it just a dependency of matplotlib, ... in the SageMath distribution?
     - conway-polynomials >=0.10
     - cvxopt >=1.3.2,<2
-    - cycler >=0.11.0
+    - cycler >=0.11.0  # TODO: Do we need actually need this for anything or is it just a dependency of matplotlib in the SageMath distribution?
     - cypari2
-    - docutils >=0.20.1
-    - entrypoints >=0.4
+    - docutils >=0.20.1  # TODO: Do we actually need this for anything or is it just a dependency of sphinx in the SageMath distribution?
+    - entrypoints >=0.4  # TODO: Do we actually need this for anything or is it just a dependency of nbconvert in the SageMath distribution?
     - flintqs >=1.0,<2
     - fplll >=5.4.5,<6
     - fpylll >=0.6.0
@@ -34,11 +34,11 @@ requirements:
     - ipython >=8.18.1,<9  # TODO: Remove this line with the next sagelib upgrade; it's in the sagelib recipe now
     - ipywidgets >=8.1.1,<9
     - jmol >=14.29.52,<15
-    - jsonschema >=4.17.3,<5
+    - jsonschema >=4.17.3,<5  # TODO: We don't seem to need this for anything. It's just a dependency of nbformat and jupyter* in the SageMath distribution.
     - jupyter_client >=8.3.1,<9
     - matplotlib-base >=3.8.0,<4
     - maxima >=5.46.0,<6
-    - mistune >=2.0.4
+    - mistune >=2.0.4  # TODO: Do we need this for anything or is it just a dependency of nbconvert in the SageMath distribution?
     - mpmath >=1.3.0,<2
     - nbclient >=0.8.0,<0.9
     - nbconvert >=7.9.2,<8
@@ -46,17 +46,17 @@ requirements:
     - networkx >=3.2.1,<4
     - notebook >=7.1.1,<8
     - palp >=2.11,<3
-    - pari >=2.15.4
+    - pari >=2.15.4  # this pin is slightly more strict than the one from the pinning-feedstock
     - pillow >=10.1.0,<11
     - pkg-config
     - pkgconfig
     - primecountpy >=0.1.0,<0.2.0  # TODO: Remove this line with the next sagelib upgrade; it's in the sagelib recipe now
-    - pyparsing >=3.1.1,<4
+    - pyparsing >=3.1.1,<4  # TODO: Do we need this for anything or is it just a dependency for matplotlib in the SageMath distribution?
     - python >=3.9
-    - python-dateutil >=2.9.0,<3
+    - python-dateutil >=2.9.0,<3  # TODO: Do we need this for anything or is it just a dependency for matplotlib in the SageMath distribution?
     - pythran >=0.14.0,<0.15
     - pytz >=2023.3.post1
-    - pyzmq >=25.1.1,<26
+    - pyzmq >=25.1.1,<26  # TODO: Do we need this for anything or is it just a dependency for ipython in the SageMath distribution?
     - rpy2 >=3.4.5,<4
     - rubiks >=20070912
     - sagelib {{ version }}
@@ -66,16 +66,16 @@ requirements:
     - sagemath-db-polytopes >=20170220
     - sagetex >=3.6.1,<4
     - scipy >=1.12.0,<2
-    - simplegeneric >=0.8.1,<1
+    - simplegeneric >=0.8.1,<1  # TODO: This can be removed. It was just a dependency of ipython at some point.
     - sphinx >=7.2.6,<8
     - sqlite >=3.36,<4
     - sympow >=2.023.6,<3
     - sympy >=1.12.1,<2
     - tachyon 0.99.*
-    - terminado >=0.17.1
-    - tornado >=6.4,<7
+    - terminado >=0.17.1  # TODO: Do we need this for anything or is it just a dependency for Jupyter in the SageMath distribution?
+    - tornado >=6.4,<7A  # TODO: Do we need this for anything or is it just a dependency for matplotlib in the SageMath distribution?
     - widgetsnbextension >=4.0.9,<5
-    - zeromq >=4.3.5,<5
+    - zeromq >=4.3.5,<5  # TODO: This can be removed. It gets pulled in by pyzmq.
     - zn_poly
 
     #- sagenb_export
