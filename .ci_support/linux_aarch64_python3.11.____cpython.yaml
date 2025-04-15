@@ -19,7 +19,7 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma9
 eclib:
-- '20231212'
+- '20250122'
 expat:
 - '2'
 fortran_compiler:
