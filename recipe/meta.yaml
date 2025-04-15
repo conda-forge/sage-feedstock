@@ -73,10 +73,7 @@ requirements:
     - lcalc         2.0.*
     - libbraiding   1.3.1
     - libbrial      1.2.*
-    # trying to merge the two folllowing lines into one doesn't work because of a
-    # conda-build bug
-    - libflint
-    - libflint      * *_ntl_*
+    - libflint      {{ libflint }} *_ntl_*
     - libgd         2.3.*
     - libhomfly     1.02.*
     - libpng
