@@ -64,8 +64,6 @@ python:
 - 3.11.* *_cpython
 readline:
 - '8'
-singular:
-- 4.4.0
 target_platform:
 - osx-arm64
 zip_keys:
