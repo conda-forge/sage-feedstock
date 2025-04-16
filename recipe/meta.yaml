@@ -96,12 +96,7 @@ requirements:
     - python
     - readline
     - rw            0.9
-    # We hardcode singular to 4.4.1 even though the pinning feedstock is still at 4.4.0.
-    # Once https://github.com/conda-forge/conda-forge-pinning-feedstock/pull/6966 has been merged this should be removed.
-    # Note that SageMath 10.6 ships Singular 4.4.0, however, according to void
-    # linux, only some minor changes happen with that upgrade (when it comes to
-    # SageMath doctests at least.)
-    - singular      4.4.1
+    - singular
     - six
     - symmetrica    3.0
     - zlib
