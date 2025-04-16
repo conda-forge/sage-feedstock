@@ -14,7 +14,7 @@ source:
 build:
   number: 0
   skip: true  # [win]
-  skip: true  # [py<39]
+  skip: true  # [py<311]
   ignore_run_exports_from:
     - {{ compiler('fortran') }}
     # sagemath-standard needs sirocco at build time but only sagemath-sirocco
