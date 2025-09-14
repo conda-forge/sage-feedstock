@@ -77,7 +77,7 @@ requirements:
     - libgd         2.3.*
     - libhomfly     1.02.*
     - libpng
-    - linbox        >=1.7.0
+    - linbox        >=1.7.1
     - lrcalc        2.1
     - m4ri
     - m4rie
