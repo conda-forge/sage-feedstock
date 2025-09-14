@@ -49,7 +49,6 @@ requirements:
     - liblapack
     - liblapacke
     - libboost-headers
-    - brial         1.2.*
     - cliquer       1.22.*
     - cypari2       2.2.*
     - cysignals     1.12.*
