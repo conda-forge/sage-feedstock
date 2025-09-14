@@ -19,7 +19,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '19'
 eclib:
-- '20250616'
+- '20250627'
 expat:
 - '2'
 fortran_compiler:
