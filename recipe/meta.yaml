@@ -149,6 +149,8 @@ requirements:
     - {{ pin_compatible("threejs-sage") }}
     # Disable ipython 8.19.0 which breaks the interactive session, see https://github.com/sagemath/sage/issues/36975
     - ipython >=8.18.1,<9,!=8.19.0
+    # sage.features.all cannot be loaded without packaging (used by the fricas feature)
+    - packaging
 
 test:
   requires:
