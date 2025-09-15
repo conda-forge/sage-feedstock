@@ -1,5 +1,5 @@
 {% set name = "sage" %}
-{% set version = "10.6" %}
+{% set version = "10.7" %}
 
 package:
   name: {{ name }}
@@ -20,27 +20,25 @@ requirements:
     - cypari2
     - flintqs >=1.0,<2
     - fplll >=5.5.0,<6
-    - fpylll >=0.6.3
+    - fpylll >=0.6.4
     - gap-defaults >=4.14.0
     - gfan >=0.6.2
     - ipykernel >=6.6.0,<7
-    - ipython >=8.18.1,<9  # TODO: Remove this line with the next sagelib upgrade; it's in the sagelib recipe now
     - ipywidgets >=8.1.1,<9
     - jmol >=14.29.52,<15
     - jupyter_client >=8.3.1,<9
-    - matplotlib-base >=3.8.0,<4
+    - matplotlib-base >=3.10.1,<4
     - maxima >=5.46.0,<6
     - mpmath >=1.3.0,<2
     - nbclient >=0.8.0,<0.9
     - nbconvert >=7.9.2,<8
     - nbformat >=5.9.2,<6
-    - networkx >=3.4.2,<4
+    - networkx >=3.5,<4
     - notebook >=7.1.1,<8
-    - palp >=2.11,<3
+    - palp >=2.21,<3
     - pillow >=11.1.0,<12
     - pkg-config
     - pkgconfig
-    - primecountpy >=0.1.0,<0.2.0  # TODO: Remove this line with the next sagelib upgrade; it's in the sagelib recipe now
     - python >=3.9
     - pythran >=0.17.0,<0.18
     - pytz >=2023.3.post1
@@ -53,7 +51,7 @@ requirements:
     - sagemath-db-polytopes >=20170220
     - sagetex >=3.6.1,<4
     - scipy >=1.15.2,<2
-    - sphinx >=8.1.3,<9
+    - sphinx >=8.2.3,<9
     - sqlite >=3.36,<4
     - sympow >=2.023.6,<3
     - sympy >=1.12.1,<2
@@ -61,19 +59,8 @@ requirements:
     - widgetsnbextension >=4.0.9,<5
     - zn_poly
 
-    #- sagenb_export
     # required for sage.misc.package.pip_installed_packages
     - pip
-
-    # dev
-    #- gcc
-    #- git
-
-    # build-time dependencies
-    #- vcversioner
-    #- setuptools_scm
-    #- boost-cpp
-    #- pkgconfig
 
 test:
   requires:
