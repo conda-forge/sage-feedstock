@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '18'
+- '19'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -17,15 +17,15 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '18'
+- '19'
 eclib:
-- '20250122'
+- '20250627'
 expat:
 - '2'
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '13'
+- '14'
 glpk:
 - '5.0'
 gmp:
@@ -53,7 +53,7 @@ mpfr:
 ntl:
 - 11.4.3
 numpy:
-- '2.0'
+- '2'
 pari:
 - 2.17.* *_pthread
 pin_run_as_build:
@@ -72,7 +72,5 @@ zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
   - fortran_compiler_version
-- - python
-  - numpy
 zlib:
 - '1'
