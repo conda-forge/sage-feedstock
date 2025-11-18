@@ -39,7 +39,7 @@ libboost_headers:
 libcblas:
 - 3.9.* *netlib
 libflint:
-- '3.2'
+- '3.3'
 liblapack:
 - 3.9.* *netlib
 liblapacke:
