@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 0
+  number: 1
   noarch: generic
 
 requirements:
@@ -55,7 +55,7 @@ requirements:
     - sqlite >=3.36,<4
     - sympow >=2.023.6,<3
     - sympy >=1.12.1,<2
-    - tachyon 0.99.*
+    - tachyon >=0.99b6,<1
     - widgetsnbextension >=4.0.9,<5
     - zn_poly
 
