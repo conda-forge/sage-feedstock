@@ -46,8 +46,6 @@ libpng:
 - '1.6'
 mpfr:
 - '4'
-ntl:
-- 11.4.3
 numpy:
 - '2'
 pari:
