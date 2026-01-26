@@ -43,7 +43,7 @@ requirements:
     - numpy                                  # [build_platform != target_platform]
   host:
     - pip
-    - setuptools
+    - meson-python
     - libblas
     - libcblas
     - liblapack
