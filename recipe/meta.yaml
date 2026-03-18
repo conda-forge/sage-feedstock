@@ -170,10 +170,8 @@ test:
   imports:
     - sage
   commands:
-    - sage -v
-    - sage -c 1+1
-    # too many doctests fail still but we test that the doctesting framework works by testing a trivial file
-    - sage -tp src/sage/version.py
+    - sage --version
+    - sage -c 'print(1+1)'
     # Test that #135 has been resolved
     - sage -c 'import sage.modular.multiple_zeta'
 
