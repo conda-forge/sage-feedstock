@@ -14,5 +14,3 @@ fi
 
 # Compile things in parallel.
 export SAGE_NUM_THREADS=$CPU_COUNT
-
-export PYTHONPATH=$PYTHONPATH:"$PWD"/pkgs/sage-setup

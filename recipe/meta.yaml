@@ -1,4 +1,4 @@
-{% set version = "10.7" %}
+{% set version = "10.8" %}
 {% set name = "sagelib" %}
 
 package:
@@ -7,14 +7,12 @@ package:
 
 source:
   url: https://github.com/sagemath/sage/archive/{{ version }}.tar.gz
-  sha256: c1806d10a1aab5a217651f63c5432585911277ad983e492356cf90dff837d748
-  patches:
-    - 0001-Build-glue-code-for-optional-extensions-sirocco-and-.patch
+  sha256: 496f90f77b569cb3c93610219d92d4abd390caf909e11f4f01d0d37d86017c8e
 
 build:
-  number: 3
+  number: 0
   skip: true  # [win]
-  skip: true  # [py<311 or py>312]
+  skip: true  # [py<312 or py>313]
   ignore_run_exports_from:
     - {{ compiler('fortran') }}
     # sagemath-standard needs sirocco at build time but only sagemath-sirocco
@@ -36,14 +34,16 @@ requirements:
     - make
     - pkg-config
     - gettext
+    - meson
+    - ninja
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython >=3,<3.0.11                     # [build_platform != target_platform]
+    - cython >=3.2                           # [build_platform != target_platform]
     - memory-allocator                       # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
   host:
     - pip
-    - setuptools
+    - meson-python
     - libblas
     - libcblas
     - liblapack
@@ -52,7 +52,7 @@ requirements:
     - cliquer       1.22.*
     - cypari2       2.2.*
     - cysignals     1.12.*
-    - cython        3.0.*
+    - cython        3.2.*
     - ecl           >=24.5.10,<25
     - eclib
     - ecm           7.*
@@ -60,7 +60,7 @@ requirements:
     - fflas-ffpack  2.5.*
     - future
     - gap-core      4.14.0
-    - giac          1.9.*
+    - giac          2.0.*
     - givaro        4.2.*
     - glpk
     - gmp
@@ -95,13 +95,13 @@ requirements:
     - python
     - readline
     - rw            0.9
-    - singular
+    - singular      ==4.4.1.p5
     - six
     - symmetrica    3.1
     - zlib
     # sage runtime deps
-    - ipython       >=8.18.1,<9
-    - pexpect       >=4.9.0,<5
+    - ipython       >9
+    - pexpect       >=4.9.0
     # for the symlinks
     - threejs-sage
     - notebook
@@ -141,14 +141,14 @@ requirements:
     - {{ pin_compatible("jupyter_core") }}
     - memory-allocator
     - {{ pin_compatible("pplpy", max_pin="x.x") }}
-    - primecountpy >=0.1.1,<0.2.0
+    - primecountpy >0.2.0
     - python
     - six
     - {{ pin_compatible("pexpect") }}
     - python-lrcalc
     - {{ pin_compatible("threejs-sage") }}
     # Disable ipython 8.19.0 which breaks the interactive session, see https://github.com/sagemath/sage/issues/36975
-    - ipython >=8.18.1,<9,!=8.19.0
+    - ipython >9.0
     # sage.features.all cannot be loaded without packaging (used by the fricas feature)
     - packaging
 
