@@ -3,7 +3,7 @@
 
 package:
   name: {{ name }}
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   url: https://github.com/sagemath/sage/archive/{{ version }}.tar.gz
@@ -96,7 +96,8 @@ requirements:
     - python
     - readline
     - rw            0.9
-    - singular      ==4.4.1.p5
+    - singular      4.4.1.p5
+    - maxima        5.47.0
     - six
     - symmetrica    3.1
     - zlib
@@ -134,6 +135,7 @@ requirements:
     - {{ pin_compatible("cysignals") }}
     - {{ pin_compatible("cython") }}
     - {{ pin_compatible("ecl", max_pin="x.x") }}
+    - maxima =5.47.0
     - future
     - {{ pin_compatible("gap-core", max_pin="x.x") }}
     - {{ pin_compatible("giac", max_pin="x.x") }}
