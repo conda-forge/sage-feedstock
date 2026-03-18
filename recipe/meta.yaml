@@ -44,6 +44,8 @@ requirements:
     - memory-allocator
     - numpy
     - cypari2       >=2.2
+    - gmpy2
+    - numpy
   host:
     - pip
     - meson-python
