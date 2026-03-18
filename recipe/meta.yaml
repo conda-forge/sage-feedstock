@@ -64,7 +64,7 @@ requirements:
     - expat
     - fflas-ffpack  2.5.*
     - future
-    - gap-core      4.14.0
+    - gap-core      4.15.1
     - giac          2.0.*
     - givaro        4.2.*
     - glpk
