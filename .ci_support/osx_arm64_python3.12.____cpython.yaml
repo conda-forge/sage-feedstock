@@ -51,7 +51,7 @@ macos_machine:
 mpfr:
 - '4'
 ntl:
-- 11.4.3
+- 11.6.0
 numpy:
 - '2'
 pari:
@@ -64,8 +64,6 @@ python:
 - 3.12.* *_cpython
 readline:
 - '8'
-singular:
-- 4.4.1
 target_platform:
 - osx-arm64
 zip_keys:

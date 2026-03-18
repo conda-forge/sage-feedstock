@@ -47,11 +47,11 @@ liblapacke:
 libpng:
 - '1.6'
 macos_machine:
-- arm64-apple-darwin20.0.0
+- x86_64-apple-darwin13.4.0
 mpfr:
 - '4'
 ntl:
-- 11.4.3
+- 11.6.0
 numpy:
 - '2'
 pari:
@@ -61,13 +61,11 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.11.* *_cpython
+- 3.13.* *_cp313
 readline:
 - '8'
-singular:
-- 4.4.1
 target_platform:
-- osx-arm64
+- osx-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
