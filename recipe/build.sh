@@ -7,7 +7,7 @@ source $RECIPE_DIR/build-env.sh
 # --no-deps and --no-build-isolation lets us completely ignore dependencies and
 # build dependencies (which otherwise would create an isolated build env instead
 # of using the conda-forge toolchain and dependencies from the recipe.)
-python -m pip install --no-deps --no-build-isolation . -v
+"$PYTHON" -m pip install --no-deps --no-build-isolation . -v
 
 # Replace symlinks that point outside the prefix with files.
 rm $PREFIX/share/jupyter/kernels/sagemath/logo.svg
