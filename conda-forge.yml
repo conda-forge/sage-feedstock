@@ -9,4 +9,4 @@ github:
 test: native
 provider:
   osx_arm64: default
-  linux_aarch64: default
+  linux_aarch64: github_actions
