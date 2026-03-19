@@ -139,7 +139,7 @@ requirements:
     - {{ pin_compatible("cysignals") }}
     - {{ pin_compatible("cython") }}
     - {{ pin_compatible("ecl", max_pin="x.x") }}
-    - maxima =5.47.0
+    - maxima 5.47.0
     - future
     - {{ pin_compatible("gap-core", max_pin="x.x") }}
     - {{ pin_compatible("giac", max_pin="x.x") }}
@@ -148,14 +148,14 @@ requirements:
     - {{ pin_compatible("jupyter_core") }}
     - memory-allocator
     - {{ pin_compatible("pplpy", max_pin="x.x") }}
-    - primecountpy >0.2.0
+    - primecountpy >=0.2.1,<0.3
     - python
     - six
     - {{ pin_compatible("pexpect") }}
     - python-lrcalc
     - {{ pin_compatible("threejs-sage") }}
     # Disable ipython 8.19.0 which breaks the interactive session, see https://github.com/sagemath/sage/issues/36975
-    - ipython >9.0
+    - ipython >=9.0.1,<10
     # sage.features.all cannot be loaded without packaging (used by the fricas feature)
     - packaging
 
