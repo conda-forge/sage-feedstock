@@ -170,6 +170,8 @@ tests:
         - pip
     script:
       - sage --version
+        # too many doctests fail still to run the entire test suite but we test that the doctesting framework works by testing a trivial file
+      - python -m sage-.doctest src/sage/version.py
       - sage -c 'print(1+1)'
       - sage -c 'import sage.modular.multiple_zeta'
 
