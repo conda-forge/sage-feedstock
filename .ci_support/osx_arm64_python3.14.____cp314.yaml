@@ -50,6 +50,8 @@ macos_machine:
 - arm64-apple-darwin20.0.0
 mpfr:
 - '4'
+ntl:
+- 11.6.0
 numpy:
 - '2'
 pari:
