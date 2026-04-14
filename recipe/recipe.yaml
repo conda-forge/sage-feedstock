@@ -89,7 +89,7 @@ outputs:
         - mpc           1.*
         - mpfi          1.5.*
         - mpfr
-        - ntl           >=11.6.0,<12
+        - ntl
         - numpy
         - pari
         - pkg-config
