@@ -1,44 +1,40 @@
-{% set version = "10.8" %}
-{% set name = "sagelib" %}
+schema_version: 1
+
+context:
+  version: "10.8"
+  name: sagelib
 
 package:
-  name: {{ name }}
-  version: "{{ version }}"
+  name: ${{ name }}
+  version: ${{ version }}
 
 source:
-  url: https://github.com/sagemath/sage/archive/{{ version }}.tar.gz
+  url: https://github.com/sagemath/sage/archive/${{ version }}.tar.gz
   sha256: 496f90f77b569cb3c93610219d92d4abd390caf909e11f4f01d0d37d86017c8e
 
 build:
   number: 0
-  skip: true  # [win]
-  skip: true  # [py<312 or py>314]
-  ignore_run_exports_from:
-    - {{ compiler('fortran') }}
-    # sagemath-standard needs sirocco at build time but only sagemath-sirocco
-    # needs it at runtime
-    - sirocco
-    # sagemath-standard needs bliss at build time but only sagemath-bliss needs
-    # it at runtime
-    - bliss
+  skip: win or match(python, "<3.12") or match(python, ">3.14")
 
 requirements:
   build:
     - libtool
     - automake
     - m4
-    - {{ compiler('cxx') }}
-    - {{ compiler('c') }}
-    - {{ stdlib("c") }}
-    - {{ compiler('fortran') }}
+    - ${{ compiler('cxx') }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('fortran') }}
     - make
     - pkg-config
     - gettext
     - meson
     - ninja
     - jinja2        3.1.*
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - if: build_platform != target_platform
+      then: python
+    - if: build_platform != target_platform
+      then: cross-python_${{ target_platform }}
     - cython        >=3.2
     - cysignals
     - memory-allocator
@@ -64,7 +60,7 @@ requirements:
     - expat
     - fflas-ffpack  2.5.*
     - future
-    - gap-core      4.15.1
+    - gap-core      4.15.1.*
     - giac          2.0.*
     - givaro        4.2.*
     - glpk
@@ -75,14 +71,14 @@ requirements:
     - jinja2        3.1.*
     - jupyter_core  >=5.3.2,<6
     - lcalc         2.1.*
-    - libbraiding   1.3.1
+    - libbraiding   1.3.1.*
     - libbrial      1.2.*
     - libflint
     - libgd         2.3.*
     - libhomfly     1.02.*
     - libpng
     - linbox        >=1.7.1
-    - lrcalc        2.1
+    - lrcalc        2.1.*
     - m4ri
     - m4rie
     - memory-allocator
@@ -95,15 +91,15 @@ requirements:
     - pkg-config
     - pkgconfig
     - planarity     4.*
-    - ppl           1.2
+    - ppl           1.2.*
     - pplpy         0.8.*
     - python
     - readline
-    - rw            0.9
-    - singular      4.4.1.p5
-    - maxima        5.47.0
+    - rw            0.9.*
+    - singular      4.4.1.p5.*
+    - maxima        5.47.0.*
     - six
-    - symmetrica    3.1
+    - symmetrica    3.1.*
     - zlib
     # sage runtime deps
     - ipython       >9
@@ -112,79 +108,82 @@ requirements:
     - threejs-sage
     - notebook
     - jmol
-
     # sagemath-standard needs bliss at build time but not at runtime, see sagemath-bliss
     - bliss >=0.77
     # sagemath-standard needs sirocco at build time but not at runtime, see sagemath-sirocco
     - sirocco
-
   # We can not include all actual runtime dependencies of Sage here as some of
   # them require Sage to build, such as some of the database packages.
   # The packages listed here are taken from the `SAGERUNTIME` variable in
   # `build/make/Makefile`.
-
   # These dependencies are enough to `import sage` and start `sage` but lots of
   # things do not work. To get all the standard dependencies of Sage, install
   # the "sage" package (which requires this "sagelib" package.)
-
   # By now we could probably drpo this separation and just use the new naming
   # from upstream, i.e., sagemath-standard, sagemath-bliss, sagemath-sirocco
   # and create one output called sage which would probably be an alias for
   # sagemath-standard. Until there is a sagemath-core or something like that,
   # we should probably keep sagelib around to be some minimal distribution.
   # See #169 for details.
-
   run:
-    - {{ pin_compatible("cypari2") }}
-    - {{ pin_compatible("cysignals") }}
-    - {{ pin_compatible("cython") }}
-    - {{ pin_compatible("ecl", max_pin="x.x") }}
-    - maxima 5.47.0
+    - ${{ pin_compatible("cypari2") }}
+    - ${{ pin_compatible("cysignals") }}
+    - ${{ pin_compatible("cython") }}
+    - ${{ pin_compatible("ecl", upper_bound="x.x") }}
+    - maxima 5.47.0.*
     - future
-    - {{ pin_compatible("gap-core", max_pin="x.x") }}
-    - {{ pin_compatible("giac", max_pin="x.x") }}
-    - {{ pin_compatible("gmpy2", max_pin="x.x") }}
-    - {{ pin_compatible("jinja2", max_pin="x.x") }}
-    - {{ pin_compatible("jupyter_core") }}
+    - ${{ pin_compatible("gap-core", upper_bound="x.x") }}
+    - ${{ pin_compatible("giac", upper_bound="x.x") }}
+    - ${{ pin_compatible("gmpy2", upper_bound="x.x") }}
+    - ${{ pin_compatible("jinja2", upper_bound="x.x") }}
+    - ${{ pin_compatible("jupyter_core") }}
     - memory-allocator
-    - {{ pin_compatible("pplpy", max_pin="x.x") }}
+    - ${{ pin_compatible("pplpy", upper_bound="x.x") }}
     - primecountpy >=0.2.1,<0.3
     - python
     - six
-    - {{ pin_compatible("pexpect") }}
+    - ${{ pin_compatible("pexpect") }}
     - python-lrcalc
-    - {{ pin_compatible("threejs-sage") }}
+    - ${{ pin_compatible("threejs-sage") }}
     # Disable ipython 8.19.0 which breaks the interactive session, see https://github.com/sagemath/sage/issues/36975
     - ipython >=9.0.1,<10
     # sage.features.all cannot be loaded without packaging (used by the fricas feature)
     - packaging
+  ignore_run_exports:
+    from_package:
+      - ${{ compiler('fortran') }}
+      - sirocco
+      - bliss
 
-test:
-  requires:
-    # Sage's doctesting framework uses a pretty printing command from sympy
-    - sympy
-    - ipywidgets
-    - pip
-  source_files:
-    - src/sage/version.py
-  imports:
-    - sage
-  commands:
-    - sage --version
-    - sage -c 'print(1+1)'
-    # Test that #135 has been resolved
-    - sage -c 'import sage.modular.multiple_zeta'
+tests:
+  - python:
+      imports:
+        - sage
+      pip_check: false
+  - files:
+      source:
+        - src/sage/version.py
+    requirements:
+      run:
+        - sympy
+        - ipywidgets
+        - pip
+    script:
+      - sage --version
+      - sage -c 'print(1+1)'
+      - sage -c 'import sage.modular.multiple_zeta'
 
 about:
-  home: https://www.sagemath.org
   license: GPL-2.0-or-later
   license_file: COPYING.txt
   summary: Open Source Mathematical Software
-  dev_url: https://github.com/sagemath/sage
-  doc_url: https://doc.sagemath.org
+  homepage: https://www.sagemath.org
+  repository: https://github.com/sagemath/sage
+  documentation: https://doc.sagemath.org
 
 extra:
   recipe-maintainers:
     - isuruf
     - saraedum
     - alexjbest
+

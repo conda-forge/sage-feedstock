@@ -3,7 +3,7 @@ About sagelib-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sagelib-feedstock/blob/main/LICENSE.txt)
 
-Home: https://www.sagemath.org
+Home: https://www.sagemath.org/
 
 Package license: GPL-2.0-or-later
 
@@ -11,7 +11,7 @@ Summary: Open Source Mathematical Software
 
 Development: https://github.com/sagemath/sage
 
-Documentation: https://doc.sagemath.org
+Documentation: https://doc.sagemath.org/
 
 Current build status
 ====================
