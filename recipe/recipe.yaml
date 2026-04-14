@@ -50,42 +50,43 @@ requirements:
     - liblapack
     - liblapacke
     - libboost-headers
-    - cliquer       1.22.*
+    - cliquer       1.23.*
     - cypari2       2.2.*
     - cysignals     1.12.*
-    - cython        3.2.*
+    - cython        3.1.*
     - ecl           >=24.5.10,<25
     - eclib
     - ecm           7.*
     - expat
     - fflas-ffpack  2.5.*
     - future
-    - gap-core      4.15.1.*
-    - giac          2.0.*
+    - gap-core      4.14.0.*
+    - giac          1.9.*
     - givaro        4.2.*
     - glpk
     - gmp
-    - gmpy2         >=2.1,<3
+    - gmpy2         >=2.2.1,<3
     - gsl
     - iml           1.0.*
     - jinja2        3.1.*
-    - jupyter_core  >=5.3.2,<6
+    - jupyter_core  >=5.8.1,<6
     - lcalc         2.1.*
     - libbraiding   1.3.1.*
     - libbrial      1.2.*
     - libflint
     - libgd         2.3.*
-    - libhomfly     1.02.*
+    - libhomfly     1.03.*
     - libpng
     - linbox        >=1.7.1
     - lrcalc        2.1.*
     - m4ri
     - m4rie
+    - maxima        5.47.0.*
     - memory-allocator
     - mpc           1.*
     - mpfi          1.5.*
     - mpfr
-    - ntl
+    - ntl           >=11.6.0,<12
     - numpy
     - pari
     - pkg-config
@@ -96,22 +97,23 @@ requirements:
     - python
     - readline
     - rw            0.9.*
-    - singular      4.4.1.p5.*
-    - maxima        5.47.0.*
+    - singular      ==4.4.1.p5
     - six
     - symmetrica    3.1.*
     - zlib
     # sage runtime deps
-    - ipython       >9
-    - pexpect       >=4.9.0
+    - ipython       >=8.18.1,<9
+    - pexpect       >=4.9.0,<5
     # for the symlinks
     - threejs-sage
     - notebook
     - jmol
-    # sagemath-standard needs bliss at build time but not at runtime, see sagemath-bliss
+
+    # sagelib needs bliss at build time but not at runtime, see sagemath-bliss
     - bliss >=0.77
-    # sagemath-standard needs sirocco at build time but not at runtime, see sagemath-sirocco
-    - sirocco
+    # sagelib needs sirocco at build time but not at runtime, see sagemath-sirocco
+    - sirocco      >=2.1.1,<3
+
   # We can not include all actual runtime dependencies of Sage here as some of
   # them require Sage to build, such as some of the database packages.
   # The packages listed here are taken from the `SAGERUNTIME` variable in
@@ -120,9 +122,9 @@ requirements:
   # things do not work. To get all the standard dependencies of Sage, install
   # the "sage" package (which requires this "sagelib" package.)
   # By now we could probably drpo this separation and just use the new naming
-  # from upstream, i.e., sagemath-standard, sagemath-bliss, sagemath-sirocco
+  # from upstream, i.e., sagelib, sagemath-bliss, sagemath-sirocco
   # and create one output called sage which would probably be an alias for
-  # sagemath-standard. Until there is a sagemath-core or something like that,
+  # sagelib. Until there is a sagemath-core or something like that,
   # we should probably keep sagelib around to be some minimal distribution.
   # See #169 for details.
   run:
@@ -130,7 +132,6 @@ requirements:
     - ${{ pin_compatible("cysignals") }}
     - ${{ pin_compatible("cython") }}
     - ${{ pin_compatible("ecl", upper_bound="x.x") }}
-    - maxima 5.47.0.*
     - future
     - ${{ pin_compatible("gap-core", upper_bound="x.x") }}
     - ${{ pin_compatible("giac", upper_bound="x.x") }}
@@ -139,14 +140,14 @@ requirements:
     - ${{ pin_compatible("jupyter_core") }}
     - memory-allocator
     - ${{ pin_compatible("pplpy", upper_bound="x.x") }}
-    - primecountpy >=0.2.1,<0.3
+    - primecountpy >=0.1.1,<0.2.0
     - python
     - six
     - ${{ pin_compatible("pexpect") }}
     - python-lrcalc
     - ${{ pin_compatible("threejs-sage") }}
     # Disable ipython 8.19.0 which breaks the interactive session, see https://github.com/sagemath/sage/issues/36975
-    - ipython >=9.0.1,<10
+    - ipython >=8.18.1,<9,!=8.19.0
     # sage.features.all cannot be loaded without packaging (used by the fricas feature)
     - packaging
   ignore_run_exports:
