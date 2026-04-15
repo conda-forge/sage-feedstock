@@ -16,6 +16,8 @@ source:
     - 0001-Allow-SageMath-to-start-when-neither-HOME-nor-DOT_SA.patch
     # See https://github.com/sagemath/sage/pull/42005
     - 0002-Do-not-invoke-GAP-when-cross-compiling.patch
+    # See https://github.com/sagemath/sage/pull/42006
+    - 0003-Do-not-require-ecl-maxima-to-be-executable-when-cros.patch
 
 build:
   number: 0
