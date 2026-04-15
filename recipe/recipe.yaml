@@ -11,6 +11,9 @@ recipe:
 source:
   url: https://github.com/sagemath/sage/archive/${{ version }}.tar.gz
   sha256: 496f90f77b569cb3c93610219d92d4abd390caf909e11f4f01d0d37d86017c8e
+  patches:
+    # See https://github.com/sagemath/sage/issues/42002
+    - 0001-Allow-SageMath-to-start-when-neither-HOME-nor-DOT_SA.patch
 
 build:
   number: 0
@@ -169,9 +172,6 @@ outputs:
           imports:
             - sage.all
           pip_check: false
-          env:
-            # HOME (or DOT_SAGE) must be set for the CLI to be functional and when sage.misc.misc is imported.
-            HOME: .
       - files:
           source:
             - src/sage/version.py
@@ -181,9 +181,6 @@ outputs:
             - ipywidgets
             - pip
         script:
-          env:
-            # HOME (or DOT_SAGE) must be set for the CLI to be functional and when sage.misc.misc is imported.
-            HOME: .
           content: |
             sage --version
             # too many doctests fail still to run the entire test suite but we test that the doctesting framework works by testing a trivial file
@@ -213,9 +210,6 @@ outputs:
           imports:
             - sage.graphs.bliss
           pip_check: false
-          env:
-            # HOME (or DOT_SAGE) must be set for the CLI to be functional and when sage.misc.misc is imported.
-            HOME: .
   - package:
       name: sagemath-sirocco
     build:
@@ -228,9 +222,6 @@ outputs:
           imports:
             - sage.libs.sirocco
           pip_check: false
-          env:
-            # HOME (or DOT_SAGE) must be set for the CLI to be functional and when sage.misc.misc is imported.
-            HOME: .
 
 
 about:
