@@ -14,6 +14,7 @@ source:
   patches:
     # See https://github.com/sagemath/sage/issues/42002
     - 0001-Allow-SageMath-to-start-when-neither-HOME-nor-DOT_SA.patch
+    - 0001-Use-standard-.sage-implementation-in-doctests.patch
     # See https://github.com/sagemath/sage/pull/42005
     - 0002-Do-not-invoke-GAP-when-cross-compiling.patch
     # See https://github.com/sagemath/sage/pull/42006
