@@ -167,8 +167,11 @@ outputs:
     tests:
       - python:
           imports:
-            - sage
+            - sage.all
           pip_check: false
+          env:
+            # HOME (or DOT_SAGE) must be set for the CLI to be functional and when sage.misc.misc is imported.
+            HOME: .
       - files:
           source:
             - src/sage/version.py
@@ -179,7 +182,7 @@ outputs:
             - pip
         script:
           env:
-            # HOME (or DOT_SAGE) must be set for the CLI to be functional.
+            # HOME (or DOT_SAGE) must be set for the CLI to be functional and when sage.misc.misc is imported.
             HOME: .
           content: |
             sage --version
@@ -210,6 +213,9 @@ outputs:
           imports:
             - sage.graphs.bliss
           pip_check: false
+          env:
+            # HOME (or DOT_SAGE) must be set for the CLI to be functional and when sage.misc.misc is imported.
+            HOME: .
   - package:
       name: sagemath-sirocco
     build:
@@ -222,6 +228,9 @@ outputs:
           imports:
             - sage.libs.sirocco
           pip_check: false
+          env:
+            # HOME (or DOT_SAGE) must be set for the CLI to be functional and when sage.misc.misc is imported.
+            HOME: .
 
 
 about:
