@@ -1,4 +1,4 @@
-From 746828f1f5ab004614a1661ad05f09a1f4072c32 Mon Sep 17 00:00:00 2001
+From ab55e4f5d39c2c66eaf1b021fdaaed034c597fd3 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Wed, 15 Apr 2026 20:20:18 +0300
 Subject: [PATCH] Use standard .sage implementation in doctests
@@ -6,16 +6,16 @@ Subject: [PATCH] Use standard .sage implementation in doctests
 this fixes the .sage on Windows or when HOME is not set, e.g., during
 rattler-build.
 ---
- src/sage/doctest/__main__.py | 14 +++++---------
- 1 file changed, 5 insertions(+), 9 deletions(-)
+ src/sage/doctest/__main__.py | 17 +++++++----------
+ 1 file changed, 7 insertions(+), 10 deletions(-)
 
 diff --git a/src/sage/doctest/__main__.py b/src/sage/doctest/__main__.py
-index bae4a7b6718..01e19f1e412 100644
+index 42a80f78a1a..cfad17e4f3c 100644
 --- a/src/sage/doctest/__main__.py
 +++ b/src/sage/doctest/__main__.py
-@@ -5,13 +5,6 @@ import sys
- 
- import pytest
+@@ -3,13 +3,6 @@ import os
+ import sys
+ import shlex
  
 -# Note: the DOT_SAGE and SAGE_STARTUP_FILE environment variables have already been set by sage-env
 -DOT_SAGE = os.environ.get('DOT_SAGE', os.path.join(os.environ.get('HOME'),
@@ -27,27 +27,37 @@ index bae4a7b6718..01e19f1e412 100644
  
  def _get_optional_defaults():
      """Return the default value for the --optional flag."""
-@@ -162,7 +155,10 @@ def _make_parser():
+@@ -159,6 +152,11 @@ def _make_parser():
+ 
  
  def main():
-     from sage.doctest.control import DocTestController
--    from sage.env import SAGE_SRC
 +    import sage.env
 +
 +    # Override to not pick up user configuration, see Issue #20270
 +    os.environ['SAGE_STARTUP_FILE'] = sage.env.SAGE_STARTUP_FILE = os.path.join(sage.env.DOT_SAGE, 'init-doctests.sage')
- 
++
      parser = _make_parser()
      # custom treatment to separate properly
-@@ -206,7 +202,7 @@ def main():
+     # one or several file names at the end
+@@ -198,8 +196,7 @@ def main():
+     # Issue #33521: Do not run pytest if the pytest configuration is not available.
+     # This happens when the source tree is not available and SAGE_SRC falls back
+     # to SAGE_LIB.
+-    from sage.env import SAGE_SRC
+-    if not all(os.path.isfile(os.path.join(SAGE_SRC, f))
++    if not all(os.path.isfile(os.path.join(sage.env.SAGE_SRC, f))
+                for f in ["conftest.py", "tox.ini"]):
+         return err
  
-     # #35999: no filename in arguments defaults to "src"
-     if not args.filenames:
--        filenames = [SAGE_SRC]
-+        filenames = [sage.env.SAGE_SRC]
-     else:
-         # #31924: Do not run pytest on individual Python files unless
-         # they match the pytest file pattern.  However, pass names
+@@ -212,7 +209,7 @@ def main():
+ 
+         # #35999: no filename in arguments defaults to "src"
+         if not args.filenames:
+-            filenames = [SAGE_SRC]
++            filenames = [sage.env.SAGE_SRC]
+         else:
+             # #31924: Do not run pytest on individual Python files unless
+             # they match the pytest file pattern.  However, pass names
 -- 
 2.53.0
 
