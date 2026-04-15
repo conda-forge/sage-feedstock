@@ -31,7 +31,6 @@ outputs:
         - make
         - pkg-config
         - gettext
-        - meson
         - ninja
         - jinja2        3.1.*
         - if: build_platform != target_platform
