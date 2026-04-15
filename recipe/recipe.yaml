@@ -210,6 +210,7 @@ outputs:
       - python:
           imports:
             - sage.graphs.bliss
+          pip_check: false
   - package:
       name: sagemath-sirocco
     build:
@@ -221,6 +222,7 @@ outputs:
       - python:
           imports:
             - sage.libs.sirocco
+          pip_check: false
 
 
 about:
