@@ -38,7 +38,8 @@ outputs:
           then: python
         - if: build_platform != target_platform
           then: cross-python_${{ target_platform }}
-        - cython        >=3.2
+        - if: build_platform != target_platform
+          then: cython        3.1.*
         - cysignals
         - memory-allocator
         - numpy
