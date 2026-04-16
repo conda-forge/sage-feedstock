@@ -296,7 +296,10 @@ outputs:
             sage -v
             sage -c 1+1
             echo exit | sage
-      - requirements:
+      - files:
+          source:
+            - src/sage/
+        requirements:
           run:
             - bc
             - git
