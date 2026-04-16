@@ -13,6 +13,12 @@ Development: https://github.com/sagemath/sage
 
 Documentation: https://doc.sagemath.org/
 
+SageMath is a free open-source mathematics software system. It builds on top of many existing open-source packages.
+On conda-forge it is split into several related packages:
+* sagelib — the Python package sage with minimal dependencies to be able to `import sage.all`
+* sage — the standard distribution of SageMath, i.e., ``sagelib`` with all standard dependencies
+* sagemath-* — optional parts of SageMath that are not automatically installed by `sage`
+
 Current build status
 ====================
 
