@@ -1,0 +1,75 @@
+From 691182647f2ee768ceec7f0dbce9c2b54168a369 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Wed, 15 Apr 2026 15:23:14 +0300
+Subject: [PATCH] Do not invoke GAP when cross-compiling
+
+---
+ meson.options        |  7 +++++++
+ src/sage/meson.build | 33 ++++++++++++++++++++++-----------
+ 2 files changed, 29 insertions(+), 11 deletions(-)
+
+diff --git a/meson.options b/meson.options
+index 294e1171b03..89c2453d3e7 100644
+--- a/meson.options
++++ b/meson.options
+@@ -8,6 +8,13 @@ option(
+   description: 'Path to SAGE_LOCAL directory (only used for compatibility with the old Sage-the-Distro',
+ )
+ 
++option(
++  'GAP_ROOT_PATHS',
++  type: 'string',
++  value: '',
++  description: 'Semicolon-separated GAP root paths; empty uses the Sage defaults and appends detected system GAP paths when available',
++)
++
+ #
+ # Boolean options
+ #
+diff --git a/src/sage/meson.build b/src/sage/meson.build
+index d43e636a4e8..cd868d41dc1 100644
+--- a/src/sage/meson.build
++++ b/src/sage/meson.build
+@@ -36,17 +36,28 @@ if openmp.found()
+ endif
+ gap_exe = find_program('gap', required: not is_windows, disabler: true)
+ if gap_exe.found()
+-  gaprun = run_command(
+-    gap_exe,
+-    '-r',
+-    '-q',
+-    '--bare',
+-    '--nointeract',
+-    '-c',
+-    'Display(JoinStringsWithSeparator(GAPInfo.RootPaths,";"));',
+-    check: true,
+-  )
+-  gap_root_paths = gaprun.stdout().strip()
++  gap_root_paths = get_option('GAP_ROOT_PATHS')
++  if gap_root_paths == ''
++    if meson.can_run_host_binaries()
++      gaprun = run_command(
++        gap_exe,
++        '-r',
++        '-q',
++        '--bare',
++        '--nointeract',
++        '-c',
++        'Display(JoinStringsWithSeparator(GAPInfo.RootPaths,";"));',
++        check: true,
++      )
++      gap_root_paths = gaprun.stdout().strip()
++    else
++      gap_root_paths = '${prefix}/lib/gap;${prefix}/share/gap'
++      message(
++        'Warning: Unable to determine system GAP root paths because host binaries cannot be run. '
++        + 'Using the default GAP_ROOT_PATHS=' + gap_root_paths + '.',
++      )
++    endif
++  endif
+   conf_data.set('GAP_ROOT_PATHS', gap_root_paths)
+ endif
+ ecm_bin = find_program(
+-- 
+2.53.0
+
