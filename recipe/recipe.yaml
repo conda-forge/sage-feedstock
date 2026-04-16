@@ -6,7 +6,7 @@ context:
 
 recipe:
   name: ${{ name }}
-  version: ${{ version }}
+  version: "${{ version }}"
 
 source:
   url: https://github.com/sagemath/sage/archive/${{ version }}.tar.gz
