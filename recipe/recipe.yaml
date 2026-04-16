@@ -154,9 +154,11 @@ outputs:
         - ${{ pin_compatible("pplpy", upper_bound="x.x") }}
         - primecountpy >=0.1.1,<0.2.0
         - python
-        - six
         - ${{ pin_compatible("pexpect") }}
         - python-lrcalc
+        # Explicitly pin singular since its run_exports is having issues, see https://github.com/conda-forge/singular-feedstock/issues/37
+        - singular      ==4.4.1.p5
+        - six
         - ${{ pin_compatible("threejs-sage") }}
         # Disable ipython 8.19.0 which breaks the interactive session, see https://github.com/sagemath/sage/issues/36975
         - ipython >=8.18.1,<9,!=8.19.0
