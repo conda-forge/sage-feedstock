@@ -288,16 +288,33 @@ outputs:
           imports:
             - sage.all
           pip_check: false
+      - script:
+          content: |
+            sage -v
+            sage -c 1+1
+            echo exit | sage
       - requirements:
           run:
             - bc
             - git
             - patch
-        script:
-          content: |
-            sage -v
-            sage -c 1+1
-            echo exit | sage
+        script: |
+          ln -s $PREFIX local
+
+          export SAGE_LOCAL=$PWD/local
+          export SAGE_ROOT=$PWD
+          ls $SAGE_ROOT
+          ls $SAGE_LOCAL
+          echo $SAGE_ROOT > "$SAGE_LOCAL/lib/sage-current-location.txt"
+
+          export SAGE_NUM_THREADS=$CPU_COUNT
+
+          set +e
+          python -m sage.doctest -tp --initial --all --optional=memlimit,sage | tee doctest.txt
+
+          cat doctest.txt | grep '^sage -t ' | grep '#' > doctest.summary.txt
+          echo `cat doctest.summary.txt | awk '{ print $6 }' | sort | grep -E '[0-9]+' | paste -sd+ | bc` failing individual doctests
+          cat doctest.summary.txt | awk '{ print $6 }' | sort | grep -vE '[0-9]+' | sort | uniq -c
 
 about:
   license: GPL-2.0-or-later
