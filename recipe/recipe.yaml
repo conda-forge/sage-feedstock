@@ -230,6 +230,9 @@ outputs:
           pip_check: false
   - package:
       name: sage
+    build:
+      script:
+        - echo "This is a meta-package that just pulls in dependencies. It packages no files of its own."
     requirements:
       run:
         - ${{ pin_subpackage('sagelib', exact=True) }}
