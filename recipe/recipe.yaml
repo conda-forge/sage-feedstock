@@ -126,10 +126,6 @@ outputs:
         # sagelib needs sirocco at build time but not at runtime, see sagemath-sirocco
         - sirocco      >=2.1.1,<3
 
-      # We can not include all actual runtime dependencies of Sage here as some of
-      # them require Sage to build, such as some of the database packages.
-      # The packages listed here were taken from the `SAGERUNTIME` variable in
-      # `build/make/Makefile`.
       # These dependencies are enough to `import sage` and start `sage` but lots of
       # things do not work. To get all the standard dependencies of Sage, install
       # the "sage" package (which requires this "sagelib" package.)
@@ -138,7 +134,7 @@ outputs:
       # However, a more minimal distribution of SageMath, such as this sagelib,
       # is often useful. Until there is some notion of a sagemath-core we
       # should probably keep sagelib around therefore.
-      # See #169 for details.
+      # See sagelib-feedstock/#169 for details.
       run:
         - ${{ pin_compatible("cypari2") }}
         - ${{ pin_compatible("cysignals") }}
@@ -179,22 +175,27 @@ outputs:
       - python:
           imports:
             - sage.all
+            # Verify that https://github.com/conda-forge/sage-feedstock/issues/135 has been resolved
+            - sage.modular.multiple_zeta
           pip_check: false
+      - script:
+          # Verify that the sage executable works (note that the REPL is not functional without ipywidgets)
+          - sage --version
+          - sage -c 'print(1 + 1)'
+      # Test that some minimal doctests pass with this incomplete version of SageMath
       - files:
-          source:
-            - src/sage/version.py
+          recipe:
+            - doctest-sagelib.sage
+        script:
+          - python -m sage.doctest doctest-sagelib.sage
         requirements:
           run:
+            # Sage's doctesting framework uses a pretty printing command from sympy
             - sympy
+            # The SageMath REPL (which is invoked by the doctesting) uses ipywidgets
             - ipywidgets
+            # Feature detection which is used by many parts of SageMath uses pip
             - pip
-        script:
-          content: |
-            sage --version
-            # too many doctests fail still to run the entire test suite but we test that the doctesting framework works by testing a trivial file
-            python -m sage.doctest src/sage/version.py
-            sage -c 'print(1+1)'
-            sage -c 'import sage.modular.multiple_zeta'
   # Currently, there is no real sagemath-bliss or sagemath-sirocco package
   # supported by SageMath upstream anymore so we actually include them in the
   # sagelib package.
@@ -298,6 +299,12 @@ outputs:
             sage -v
             sage -c 1+1
             echo exit | sage
+      - files:
+          recipe:
+            - doctest-sage.sage
+            - doctest-sagelib.sage
+        script:
+          - python -m sage.doctest doctest-sagelib.sage doctest-sage.sage
       - files:
           source:
             - src/sage/
