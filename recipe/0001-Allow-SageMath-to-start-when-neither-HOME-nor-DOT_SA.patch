@@ -13,7 +13,7 @@ diff --git a/src/sage/env.py b/src/sage/env.py
 index f6c198a8617..bcb0cca7e15 100644
 --- a/src/sage/env.py
 +++ b/src/sage/env.py
-@@ -178,7 +178,32 @@ if sys.platform == 'win32':
+@@ -178,7 +178,29 @@ if sys.platform == 'win32':
      home_dir = os.environ.get("USERPROFILE")
  else:  # Unix-like systems (Linux, macOS, etc.)
      home_dir = os.environ.get("HOME")
@@ -37,9 +37,6 @@ index f6c198a8617..bcb0cca7e15 100644
 +    """
 +    from tempfile import TemporaryDirectory
 +    tmpdir = TemporaryDirectory(ignore_cleanup_errors=True)
-+
-+    import atexit
-+    atexit.register(tmpdir.cleanup)
 +
 +    return tmpdir.name
 +
