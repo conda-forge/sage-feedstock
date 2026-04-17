@@ -58,7 +58,7 @@ index d43e636a4e8..cd868d41dc1 100644
 +        'Display(JoinStringsWithSeparator(GAPInfo.RootPaths,";"));',
 +        check: true,
 +      )
-+      gap_root_paths = gaprun.stdout().strip()
++      gap_root_paths = gaprun.stdout().strip().replace('\\\n', '')
 +    else
 +      gap_root_paths = '${prefix}/lib/gap;${prefix}/share/gap'
 +      message(
