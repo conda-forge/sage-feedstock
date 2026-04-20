@@ -140,6 +140,7 @@ outputs:
         - ${{ pin_compatible("cysignals") }}
         - ${{ pin_compatible("cython") }}
         - ${{ pin_compatible("ecl", upper_bound="x.x") }}
+        - expat
         - future
         - ${{ pin_compatible("gap-core", upper_bound="x.x") }}
         - ${{ pin_compatible("giac", upper_bound="x.x") }}
