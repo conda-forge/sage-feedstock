@@ -153,6 +153,7 @@ outputs:
         - python
         - ${{ pin_compatible("pexpect") }}
         - python-lrcalc
+        - pytest
         # Explicitly pin singular since its run_exports is having issues, see https://github.com/conda-forge/singular-feedstock/issues/37
         - singular      ==4.4.1.p5
         - six
