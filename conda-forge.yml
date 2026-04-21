@@ -1,9 +1,14 @@
-build_platform: {osx_arm64: osx_64}
+azure:
+  store_build_artifacts: true
+build_platform:
+  linux_aarch64: linux_64
+  osx_arm64: osx_64
+conda_build:
+  pkg_format: '2'
 conda_forge_output_validation: true
-provider: {linux_aarch64: default}
+conda_build_tool: rattler-build
+conda_install_tool: pixi
 github:
   branch_name: main
   tooling_branch_name: main
-conda_build:
-  pkg_format: '2'
-test: native_and_emulated
+test: native

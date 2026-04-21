@@ -3,28 +3,127 @@ About sage-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sage-feedstock/blob/main/LICENSE.txt)
 
-Home: http://sagemath.org
+Home: https://www.sagemath.org/
 
 Package license: GPL-2.0-or-later
 
-Summary: Sage - Open Source Mathematical Software
+Summary: Open Source Mathematical Software
 
 Development: https://github.com/sagemath/sage
 
 Documentation: https://doc.sagemath.org/
 
-Creating a Viable Open Source Alternative to Magma, Maple, Mathematica, and MATLAB.
-
+SageMath is a free open-source mathematics software system. It builds on top of many existing open-source packages.
+On conda-forge it is split into several related packages:
+* sagelib — the Python package sage with minimal dependencies to be able to `import sage.all`
+* sage — the standard distribution of SageMath, i.e., ``sagelib`` with all standard dependencies
+* sagemath-* — optional parts of SageMath that are not automatically installed by `sage`
 
 Current build status
 ====================
 
 
-<table><tr><td>All platforms:</td>
+<table>
+    
+  <tr>
+    <td>Azure</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
-        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main">
-      </a>
+      <details>
+        <summary>
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main">
+          </a>
+        </summary>
+        <table>
+          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
+          <tbody><tr>
+              <td>linux_64_python3.12.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.12.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_python3.13.____cp313</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.13.____cp313" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_python3.14.____cp314</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.14.____cp314" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_aarch64_python3.12.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.12.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_aarch64_python3.13.____cp313</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.13.____cp313" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_aarch64_python3.14.____cp314</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.14.____cp314" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.12.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.12.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.13.____cp313</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.13.____cp313" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.14.____cp314</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.14.____cp314" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_python3.12.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.12.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_python3.13.____cp313</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.13.____cp313" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_python3.14.____cp314</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4322&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sage-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.14.____cp314" alt="variant">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
     </td>
   </tr>
 </table>
@@ -35,6 +134,9 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-sage-green.svg)](https://anaconda.org/conda-forge/sage) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sage.svg)](https://anaconda.org/conda-forge/sage) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sage.svg)](https://anaconda.org/conda-forge/sage) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sage.svg)](https://anaconda.org/conda-forge/sage) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-sagelib-green.svg)](https://anaconda.org/conda-forge/sagelib) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sagelib.svg)](https://anaconda.org/conda-forge/sagelib) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sagelib.svg)](https://anaconda.org/conda-forge/sagelib) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sagelib.svg)](https://anaconda.org/conda-forge/sagelib) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-sagemath--bliss-green.svg)](https://anaconda.org/conda-forge/sagemath-bliss) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sagemath-bliss.svg)](https://anaconda.org/conda-forge/sagemath-bliss) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sagemath-bliss.svg)](https://anaconda.org/conda-forge/sagemath-bliss) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sagemath-bliss.svg)](https://anaconda.org/conda-forge/sagemath-bliss) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-sagemath--sirocco-green.svg)](https://anaconda.org/conda-forge/sagemath-sirocco) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sagemath-sirocco.svg)](https://anaconda.org/conda-forge/sagemath-sirocco) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sagemath-sirocco.svg)](https://anaconda.org/conda-forge/sagemath-sirocco) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sagemath-sirocco.svg)](https://anaconda.org/conda-forge/sagemath-sirocco) |
 
 Installing sage
 ===============
@@ -46,16 +148,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `sage` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `sage, sagelib, sagemath-bliss, sagemath-sirocco` can be installed with `conda`:
 
 ```
-conda install sage
+conda install sage sagelib sagemath-bliss sagemath-sirocco
 ```
 
 or with `mamba`:
 
 ```
-mamba install sage
+mamba install sage sagelib sagemath-bliss sagemath-sirocco
 ```
 
 It is possible to list all of the versions of `sage` available on your platform with `conda`:

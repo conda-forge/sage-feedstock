@@ -1,0 +1,356 @@
+schema_version: 1
+
+context:
+  version: "10.8"
+  name: sage
+
+recipe:
+  name: ${{ name }}
+  version: "${{ version }}"
+
+source:
+  url: https://github.com/sagemath/sage/archive/${{ version }}.tar.gz
+  sha256: 496f90f77b569cb3c93610219d92d4abd390caf909e11f4f01d0d37d86017c8e
+  patches:
+    # See https://github.com/sagemath/sage/issues/42002
+    - 0001-Allow-SageMath-to-start-when-neither-HOME-nor-DOT_SA.patch
+    - 0001-Use-standard-.sage-implementation-in-doctests.patch
+    - 0001-Teach-atomic_write-to-create-the-containing-director.patch
+    # See https://github.com/sagemath/sage/pull/42005
+    - 0002-Do-not-invoke-GAP-when-cross-compiling.patch
+    # See https://github.com/sagemath/sage/pull/42006
+    - 0003-Do-not-require-ecl-maxima-to-be-executable-when-cros.patch
+
+build:
+  number: 1
+  skip: win or match(python, "<3.12") or match(python, ">3.14")
+
+outputs:
+  - package:
+      name: sagelib
+    requirements:
+      build:
+        - libtool
+        - automake
+        - m4
+        - ${{ compiler('cxx') }}
+        - ${{ compiler('c') }}
+        - ${{ stdlib("c") }}
+        - ${{ compiler('fortran') }}
+        - make
+        - pkg-config
+        - gettext
+        - ninja
+        - jinja2        3.1.*
+        - if: build_platform != target_platform
+          then: python
+        - if: build_platform != target_platform
+          then: cross-python_${{ target_platform }}
+        - if: build_platform != target_platform
+          then: cython        3.1.*
+        - cysignals
+        - memory-allocator
+        - numpy
+        - cypari2       >=2.2
+        - gmpy2
+        - numpy
+      host:
+        - pip
+        - meson-python
+        - libblas
+        - libcblas
+        - liblapack
+        - liblapacke
+        - libboost-headers
+        - cliquer       1.23.*
+        - cypari2       2.2.*
+        - cysignals     1.12.*
+        - cython        3.1.*
+        - ecl           >=24.5.10,<25
+        - eclib
+        - ecm           7.*
+        - expat
+        - fflas-ffpack  2.5.*
+        - future
+        - gap-core      4.14.0.*
+        - giac          1.9.*
+        - givaro        4.2.*
+        - glpk
+        - gmp
+        - gmpy2         >=2.2.1,<3
+        - gsl
+        - iml           1.0.*
+        - jinja2        3.1.*
+        - jupyter_core  >=5.8.1,<6
+        - lcalc         2.1.*
+        - libbraiding   1.3.1.*
+        - libbrial      1.2.*
+        - libflint
+        - libgd         2.3.*
+        - libhomfly     1.03.*
+        - libpng
+        - linbox        >=1.7.1
+        - lrcalc        2.1.*
+        - m4ri
+        - m4rie
+        - maxima        5.47.0.*
+        - memory-allocator
+        - mpc           1.*
+        - mpfi          1.5.*
+        - mpfr
+        - ntl
+        - numpy
+        - pari
+        - pkg-config
+        - pkgconfig
+        - planarity     4.*
+        - ppl           1.2.*
+        - pplpy         0.8.*
+        - python
+        - readline
+        - rw            0.9.*
+        - singular      ==4.4.1.p5
+        - six
+        - symmetrica    3.1.*
+        - zlib
+        # sage runtime deps
+        - ipython       >=8.18.1,<9
+        - pexpect       >=4.9.0,<5
+        # for the symlinks
+        - threejs-sage
+        - notebook
+        - jmol
+
+        # sagelib needs bliss at build time but not at runtime, see sagemath-bliss
+        - bliss >=0.77
+        # sagelib needs sirocco at build time but not at runtime, see sagemath-sirocco
+        - sirocco      >=2.1.1,<3
+
+      # These dependencies are enough to `import sage` and start `sage` but lots of
+      # things do not work. To get all the standard dependencies of Sage, install
+      # the "sage" package (which requires this "sagelib" package.)
+      # By now we could probably drop this separation and create one feedstock
+      # with possibly multiple outputs.
+      # However, a more minimal distribution of SageMath, such as this sagelib,
+      # is often useful. Until there is some notion of a sagemath-core we
+      # should probably keep sagelib around therefore.
+      # See sagelib-feedstock/#169 for details.
+      run:
+        - ${{ pin_compatible("cypari2") }}
+        - ${{ pin_compatible("cysignals") }}
+        - ${{ pin_compatible("cython") }}
+        - ${{ pin_compatible("ecl", upper_bound="x.x") }}
+        - expat
+        - future
+        - ${{ pin_compatible("gap-core", upper_bound="x.x") }}
+        - ${{ pin_compatible("giac", upper_bound="x.x") }}
+        - ${{ pin_compatible("gmpy2", upper_bound="x.x") }}
+        - ${{ pin_compatible("jinja2", upper_bound="x.x") }}
+        - ${{ pin_compatible("jupyter_core") }}
+        - memory-allocator
+        - ${{ pin_compatible("pplpy", upper_bound="x.x") }}
+        - primecountpy >=0.1.1,<0.2.0
+        - python
+        - ${{ pin_compatible("pexpect") }}
+        - python-lrcalc
+        - pytest
+        # Explicitly pin singular since its run_exports is having issues, see https://github.com/conda-forge/singular-feedstock/issues/37
+        - singular      ==4.4.1.p5
+        - six
+        - ${{ pin_compatible("threejs-sage") }}
+        # Disable ipython 8.19.0 which breaks the interactive session, see https://github.com/sagemath/sage/issues/36975
+        - ipython >=8.18.1,<9,!=8.19.0
+        # sage.features.all cannot be loaded without packaging (used by the fricas feature)
+        - packaging
+      ignore_run_exports:
+        from_package:
+          - ${{ compiler('fortran') }}
+          # Ideally, we'd only build the glue code for sirocco but not install that glue glue code.
+          # However, this is currently not really supported in the meson setup,
+          # so we just install the glue code and depend on sirocco normally
+          # (since sirocco has no problematic dependencies, this only increases
+          # the size of sagelib a bit but should otherwise not be a problem.)
+          # - sirocco
+          # Same comments as for sirocco also apply to bliss.
+          # - bliss
+    tests:
+      - python:
+          imports:
+            - sage.all
+            # Verify that https://github.com/conda-forge/sage-feedstock/issues/135 has been resolved
+            - sage.modular.multiple_zeta
+          pip_check: false
+      - script:
+          # Verify that the sage executable works (note that the REPL is not functional without ipywidgets)
+          - sage --version
+          - sage -c 'print(1 + 1)'
+      # Test that some minimal doctests pass with this incomplete version of SageMath
+      - files:
+          recipe:
+            - doctest-sagelib.sage
+        script:
+          - python -m sage.doctest doctest-sagelib.sage
+        requirements:
+          run:
+            # Sage's doctesting framework uses a pretty printing command from sympy
+            - sympy
+            # The SageMath REPL (which is invoked by the doctesting) uses ipywidgets
+            - ipywidgets
+            # Feature detection which is used by many parts of SageMath uses pip
+            - pip
+  # Currently, there is no real sagemath-bliss or sagemath-sirocco package
+  # supported by SageMath upstream anymore so we actually include them in the
+  # sagelib package.
+  # We could roll our own package separation by just including the relevant .so
+  # files in sagemath-bliss and sagemath-sirocco. However, without support for
+  # staging outputs this is very tedious, see
+  # https://github.com/conda/ceps/pull/102 and
+  # https://github.com/conda-forge/conda-smithy/issues/2057.
+  # In the meantime, we keep these packages around so workflows that use them
+  # can be easily upgraded and because we think that we'll likely bring such
+  # packages back to support optional dependencies better.
+  - package:
+      name: sagemath-bliss
+    build:
+      script: install-sagemath-bliss.sh
+    requirements:
+      run:
+        - ${{ pin_subpackage('sagelib', exact=True) }}
+    tests:
+      - python:
+          imports:
+            - sage.graphs.bliss
+          pip_check: false
+  - package:
+      name: sagemath-sirocco
+    build:
+      script: install-sagemath-sirocco.sh
+    requirements:
+      run:
+        - ${{ pin_subpackage('sagelib', exact=True) }}
+    tests:
+      - python:
+          imports:
+            - sage.libs.sirocco
+          pip_check: false
+  - package:
+      name: sage
+    build:
+      script:
+        - echo "This is a meta-package that just pulls in dependencies. It packages no files of its own."
+    requirements:
+      run:
+        - ${{ pin_subpackage('sagelib', exact=True) }}
+
+        # We require all dependencies with at least that version that upstream uses
+        # in their SPKGs. For packages that (seem to) use semantic versioning and
+        # are at least 1.0.0, we limit the version to the next major release.
+        - blas-devel
+        - conway-polynomials >=0.10
+        - cvxopt >=1.3.2,<2
+        - cypari2 >=2.2.4,<3
+        - flintqs >=1.0,<2
+        - fplll >=5.5.0,<6
+        - fpylll >=0.6.4
+        - gap-defaults >=4.14.0
+        - gfan >=0.6.2
+        - ipykernel >=6.30.1,<7
+        - ipywidgets >=8.1.1,<9
+        - jmol >=14.29.52,<15
+        - jupyter_client >=8.3.1,<9
+        - matplotlib-base >=3.10.5,<4
+        - maxima >=5.46.0,<6
+        # mpmath 1.4.* leads to lots of assert type(man) == MPZ failures
+        - mpmath >=1.3.0,<1.4
+        - nbclient >=0.8.0,<0.9
+        - nbconvert >=7.9.2,<8
+        - nbformat >=5.9.2,<6
+        - networkx >=3.5,<4
+        - notebook >=7.1.1,<8
+        - palp >=2.21,<3
+        - pillow >=11.3.0,<12
+        - pkg-config
+        - pkgconfig
+        - python >=3.9
+        - pythran >=0.18.0,<0.19
+        - pytz >=2025.2
+        - rpy2 >=3.4.5,<4
+        - rubiks >=20070912
+        - sagemath-db-combinatorial-designs >=20140630
+        - sagemath-db-elliptic-curves >=0.8.1
+        - sagemath-db-graphs >=20210214
+        - sagemath-db-polytopes >=20170220
+        - sagetex >=3.6.1,<4
+        - scipy >=1.15.2,<2
+        - sphinx >=8.2.3,<9
+        - sqlite >=3.36,<4
+        - sympow >=2.023.6,<3
+        - sympy >=1.12.1,<2
+        - tachyon >=0.99b6,<1
+        - widgetsnbextension >=4.0.9,<5
+        - zn_poly
+
+        # required for sage.misc.package.pip_installed_packages
+        - pip
+    tests:
+      - python:
+          imports:
+            - sage.all
+          pip_check: false
+      - script:
+          content: |
+            sage -v
+            sage -c 1+1
+            echo exit | sage
+      - files:
+          recipe:
+            - doctest-sage.sage
+            - doctest-sagelib.sage
+        script:
+          - python -m sage.doctest doctest-sagelib.sage doctest-sage.sage
+      - files:
+          source:
+            - src/sage/
+        requirements:
+          run:
+            - bc
+            - git
+            - patch
+        script: |
+          set -x
+          ln -s $PREFIX local
+
+          export SAGE_LOCAL=$PWD/local
+          export SAGE_ROOT=$PWD
+          ls $SAGE_ROOT
+          ls $SAGE_LOCAL
+          echo $SAGE_ROOT > "$SAGE_LOCAL/lib/sage-current-location.txt"
+
+          export SAGE_NUM_THREADS=$CPU_COUNT
+
+          set +e
+          python -m sage.doctest -p $CPU_COUNT --initial --all --optional=memlimit,sage | tee doctest.txt
+
+          cat doctest.txt | grep '^sage -t ' | grep '#' > doctest.summary.txt
+          echo `cat doctest.summary.txt | awk '{ print $9 }' | sort | grep -E '[0-9]+' | paste -sd+ - | bc` failing individual doctests
+          cat doctest.summary.txt | awk '{ print $9 }' | sort | grep -vE '[0-9]+' | sort | uniq -c
+
+about:
+  license: GPL-2.0-or-later
+  license_file: COPYING.txt
+  summary: Open Source Mathematical Software
+  description: |
+     SageMath is a free open-source mathematics software system. It builds on top of many existing open-source packages.
+     On conda-forge it is split into several related packages:
+     * sagelib — the Python package sage with minimal dependencies to be able to `import sage.all`
+     * sage — the standard distribution of SageMath, i.e., ``sagelib`` with all standard dependencies
+     * sagemath-* — optional parts of SageMath that are not automatically installed by `sage`
+  homepage: https://www.sagemath.org
+  repository: https://github.com/sagemath/sage
+  documentation: https://doc.sagemath.org
+
+extra:
+  recipe-maintainers:
+    - isuruf
+    - saraedum
+    - alexjbest
