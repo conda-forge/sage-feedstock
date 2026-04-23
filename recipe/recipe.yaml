@@ -22,12 +22,14 @@ source:
     - 0003-Do-not-require-ecl-maxima-to-be-executable-when-cros.patch
 
 build:
-  number: 1
+  number: 2
   skip: win or match(python, "<3.12") or match(python, ">3.14")
 
 outputs:
   - package:
       name: sagelib
+    build:
+      script: build-sagelib.sh
     requirements:
       build:
         - libtool
@@ -211,8 +213,6 @@ outputs:
   # packages back to support optional dependencies better.
   - package:
       name: sagemath-bliss
-    build:
-      script: install-sagemath-bliss.sh
     requirements:
       run:
         - ${{ pin_subpackage('sagelib', exact=True) }}
@@ -223,8 +223,6 @@ outputs:
           pip_check: false
   - package:
       name: sagemath-sirocco
-    build:
-      script: install-sagemath-sirocco.sh
     requirements:
       run:
         - ${{ pin_subpackage('sagelib', exact=True) }}
