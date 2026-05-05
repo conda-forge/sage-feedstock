@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "10.8"
+  version: "10.9"
   name: sage
 
 recipe:
@@ -10,7 +10,7 @@ recipe:
 
 source:
   url: https://github.com/sagemath/sage/archive/${{ version }}.tar.gz
-  sha256: 496f90f77b569cb3c93610219d92d4abd390caf909e11f4f01d0d37d86017c8e
+  sha256: c4cebeebf45412830e35672aab40260852b92e64a29f852c7b467209c9654ebe
   patches:
     # See https://github.com/sagemath/sage/issues/42002
     - 0001-Allow-SageMath-to-start-when-neither-HOME-nor-DOT_SA.patch
@@ -22,7 +22,7 @@ source:
     - 0003-Do-not-require-ecl-maxima-to-be-executable-when-cros.patch
 
 build:
-  number: 2
+  number: 0
   skip: win or match(python, "<3.12") or match(python, ">3.14")
 
 outputs:
@@ -45,11 +45,10 @@ outputs:
         - ninja
         - jinja2        3.1.*
         - if: build_platform != target_platform
-          then: python
-        - if: build_platform != target_platform
-          then: cross-python_${{ target_platform }}
-        - if: build_platform != target_platform
-          then: cython        3.1.*
+          then:
+            - python
+            - cross-python_${{ target_platform }}
+            - cython        3.1.*
         - cysignals
         - memory-allocator
         - numpy
@@ -338,11 +337,11 @@ about:
   license_file: COPYING.txt
   summary: Open Source Mathematical Software
   description: |
-     SageMath is a free open-source mathematics software system. It builds on top of many existing open-source packages.
-     On conda-forge it is split into several related packages:
-     * sagelib — the Python package sage with minimal dependencies to be able to `import sage.all`
-     * sage — the standard distribution of SageMath, i.e., ``sagelib`` with all standard dependencies
-     * sagemath-* — optional parts of SageMath that are not automatically installed by `sage`
+    SageMath is a free open-source mathematics software system. It builds on top of many existing open-source packages.
+    On conda-forge it is split into several related packages:
+    * sagelib — the Python package sage with minimal dependencies to be able to `import sage.all`
+    * sage — the standard distribution of SageMath, i.e., ``sagelib`` with all standard dependencies
+    * sagemath-* — optional parts of SageMath that are not automatically installed by `sage`
   homepage: https://www.sagemath.org
   repository: https://github.com/sagemath/sage
   documentation: https://doc.sagemath.org
