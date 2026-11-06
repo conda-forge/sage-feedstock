@@ -61,7 +61,7 @@ outputs:
         - cypari2       2.2.*
         - cysignals     1.12.*
         - cython        3.2.*
-        - ecl           >=24.5.10,<25
+        - ecl           >=26.5.5,<27
         - eclib
         - ecm           7.*
         - expat
@@ -93,7 +93,7 @@ outputs:
         - lrcalc        2.1.*
         - m4ri
         - m4rie
-        - maxima        5.47.0.*
+        - maxima        5.49.0.*
         - memory-allocator
         - meson-python
         - mpc           1.*
@@ -110,7 +110,7 @@ outputs:
         - pplpy         0.9.*
         - python
         - readline
-        - rw            0.9.*
+        - rw            0.10.*
         # sagelib needs sirocco at build time but not at runtime, see sagemath-sirocco
         - sirocco       >=2.1.1,<3
         - singular      ==4.4.1.p5
@@ -119,7 +119,7 @@ outputs:
         - zlib
 
         # sage runtime deps
-        - ipython       >=9.12.0,<10
+        - ipython       >=9.16.0,<10
         - pexpect       >=4.9.0,<5
 
         # for the symlinks
