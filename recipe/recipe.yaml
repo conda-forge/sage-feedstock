@@ -53,7 +53,7 @@ outputs:
         - memory-allocator
         - ninja
         - numpy
-        - pkg-config
+        - pkgconf
       host:
         # sagelib needs bliss at build time but not at runtime, see sagemath-bliss
         - bliss         >=0.77
@@ -103,7 +103,7 @@ outputs:
         - numpy
         - pari
         - pip
-        - pkg-config
+        - pkgconf
         - pkgconfig
         - planarity     4.*
         - ppl           1.2.*
@@ -268,7 +268,7 @@ outputs:
         - pillow >=12.1.1,<13
         # required for sage.misc.package.pip_installed_packages
         - pip
-        - pkg-config
+        - pkgconf
         - pkgconfig
         - python >=3.9
         - pythran >=0.18.1,<0.19
