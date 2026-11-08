@@ -1,0 +1,24 @@
+From 6b5ab31e6b1312cae5023be288577432d9700524 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Sat, 7 Nov 2026 22:49:37 -0600
+Subject: [PATCH 5/5] Do not break long lines when reporting GAP roots
+
+---
+ src/sage/ext_data/gap/kernel-info.g | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/sage/ext_data/gap/kernel-info.g b/src/sage/ext_data/gap/kernel-info.g
+index aaa0d8ede01..155a2b7d1dd 100644
+--- a/src/sage/ext_data/gap/kernel-info.g
++++ b/src/sage/ext_data/gap/kernel-info.g
+@@ -8,6 +8,7 @@
+ #   riscv
+ #   /home/mjo/.gap/;/usr/lib/gap/;/usr/share/gap/
+ #
++SizeScreen([65536]);
+ KernelInfo := KERNEL_INFO();
+ PRINT_TO( "*stdout*", KernelInfo.KERNEL_VERSION, "\n");
+ PRINT_TO( "*stdout*", KernelInfo.GAP_ARCHITECTURE, "\n");
+-- 
+2.56.0
+
