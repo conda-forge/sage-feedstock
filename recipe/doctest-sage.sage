@@ -79,6 +79,8 @@ Verify that FLINT is functional::
 Verify that LinBox is functional::
 
   sage: matrix(ZZ, [[1, 2], [3, 4]]).det(algorithm='linbox', proof=False)
+  doctest:warning
+  ...
   -2
 
 Verify that Givaro is functional::
