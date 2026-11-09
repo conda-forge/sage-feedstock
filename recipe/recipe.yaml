@@ -265,7 +265,7 @@ outputs:
         - nbclient >=0.10.4,<0.11
         - nbconvert >=7.17.0,<8
         - nbformat >=5.10.4,<6
-        - networkx >=3.6.1,<4
+        - networkx >=3.7,<4
         - notebook >=7.5.5,<8
         - palp >=2.21,<3
         - pillow >=12.1.1,<13
