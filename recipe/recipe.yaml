@@ -319,6 +319,16 @@ outputs:
           set -x
           ln -s $PREFIX local
 
+          # Copy generated __init__.py files into the test environment since otherwise fast_callable tests fail
+          python - <<'EOF'
+          import pathlib, shutil, sage.ext
+          installed = pathlib.Path(sage.ext.__file__).parent.parent
+          for init in installed.rglob("__init__.py"):
+              target = pathlib.Path("src/sage") / init.relative_to(installed)
+              if target.parent.is_dir() and not target.exists():
+                  shutil.copy(init, target)
+          EOF
+
           export SAGE_LOCAL=$PWD/local
           export SAGE_ROOT=$PWD
           ls $SAGE_ROOT
