@@ -337,6 +337,11 @@ outputs:
 
           export SAGE_NUM_THREADS=$CPU_COUNT
 
+          if [[ "$(uname)" == "Darwin" ]]; then
+            # sage-env sets this for `sage -t`; we call python -m sage.doctest directly (sagemath/sage#25921)
+            export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+          fi
+
           set +e
           python -m sage.doctest -p $CPU_COUNT --initial --all --optional=memlimit,sage | tee doctest.txt
 
