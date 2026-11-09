@@ -310,6 +310,8 @@ outputs:
       - files:
           source:
             - src/sage/
+            - pyproject.toml
+            - conftest.py
         requirements:
           run:
             - bc
