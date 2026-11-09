@@ -149,6 +149,7 @@ outputs:
         - ${{ pin_compatible("gap-core", upper_bound="x.x") }}
         - ${{ pin_compatible("giac", upper_bound="x.x") }}
         - ${{ pin_compatible("gmpy2", upper_bound="x.x") }}
+        - highs 1.14.*
         - ipython >=9.12.0,<10
         - ${{ pin_compatible("jinja2", upper_bound="x.x") }}
         - ${{ pin_compatible("jupyter_core") }}
@@ -163,7 +164,7 @@ outputs:
         - python
         - python-lrcalc
         # Explicitly pin singular since its run_exports is having issues, see https://github.com/conda-forge/singular-feedstock/issues/37
-        - singular      ==4.4.1.p5
+        - singular ==4.4.1.p5
         - six
         - ${{ pin_compatible("threejs-sage") }}
       ignore_run_exports:
