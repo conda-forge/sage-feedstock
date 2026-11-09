@@ -284,6 +284,8 @@ outputs:
         - sagemath-db-polytopes >=20170220
         - sagetex >=3.6.1,<4
         - scipy >=1.17.1,<2
+        # provides distutils.log used by sage.misc.cython
+        - setuptools
         - sphinx >=9.1.0,<10
         - sqlite >=3.36,<4
         - sympow >=2.023.6,<3
