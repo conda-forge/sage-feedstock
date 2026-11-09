@@ -23,7 +23,7 @@ source:
     - 0006-Initialize-psutil-before-forking-macOS-doctest-worke.patch
 
 build:
-  number: 0
+  number: 1
   skip: win or match(python, "<3.12") or match(python, ">3.14")
 
 outputs:
@@ -75,6 +75,7 @@ outputs:
         - gmp
         - gmpy2         >=2.3.0,<3
         - gsl
+        - highs         1.14.*
         - iml           1.0.*
         - jinja2        3.1.*
         - jupyter_core  >=5.9.1,<6
@@ -149,7 +150,6 @@ outputs:
         - ${{ pin_compatible("gap-core", upper_bound="x.x") }}
         - ${{ pin_compatible("giac", upper_bound="x.x") }}
         - ${{ pin_compatible("gmpy2", upper_bound="x.x") }}
-        - highs 1.14.*
         - ipython >=9.12.0,<10
         - ${{ pin_compatible("jinja2", upper_bound="x.x") }}
         - ${{ pin_compatible("jupyter_core") }}
