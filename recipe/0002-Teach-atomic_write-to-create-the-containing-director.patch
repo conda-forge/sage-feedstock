@@ -1,7 +1,7 @@
-From 8d8733bc6aaed881b6246d41c4f31fa9e6ff2322 Mon Sep 17 00:00:00 2001
+From 5dce2c0f3ce33d70ecd7603b551e472fc0df7830 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Wed, 15 Apr 2026 23:38:33 +0300
-Subject: [PATCH 2/5] Teach atomic_write to create the containing directory if
+Subject: [PATCH 2/4] Teach atomic_write to create the containing directory if
  requested
 
 otherwise doctesting does not work when DOT_SAGE does not exist yet
@@ -12,7 +12,7 @@ otherwise doctesting does not work when DOT_SAGE does not exist yet
  2 files changed, 34 insertions(+), 6 deletions(-)
 
 diff --git a/src/sage/doctest/control.py b/src/sage/doctest/control.py
-index 4124c7c6b48..897c1755466 100644
+index 0a98ec0dc6e..9b1e3349156 100644
 --- a/src/sage/doctest/control.py
 +++ b/src/sage/doctest/control.py
 @@ -772,7 +772,7 @@ class DocTestController(SageObject):
@@ -118,5 +118,5 @@ index 41492c44f15..abab260f428 100644
          self.tempname = os.path.abspath(name)
  
 -- 
-2.54.0
+2.56.0
 

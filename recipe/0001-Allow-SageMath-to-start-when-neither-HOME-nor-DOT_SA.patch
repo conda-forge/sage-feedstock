@@ -1,24 +1,22 @@
-From b78d9e6c664a5a26fb96703d768525766a5d83cc Mon Sep 17 00:00:00 2001
+From 146334ff1e8ccde4fcf1958a60ad78c58c840513 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
-Date: Wed, 15 Apr 2026 14:38:15 +0300
-Subject: [PATCH 1/5] Allow SageMath to start when neither HOME nor DOT_SAGE
+Date: Fri, 6 Nov 2026 13:54:21 -0600
+Subject: [PATCH 1/4] Allow SageMath to start when neither HOME nor DOT_SAGE
  are set
 
-fixes #42002
 ---
- src/sage/env.py | 24 +++++++++++++++++++++++-
- 1 file changed, 23 insertions(+), 1 deletion(-)
+ src/sage/env.py | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
 
 diff --git a/src/sage/env.py b/src/sage/env.py
-index f6c198a8617..b69631bbc31 100644
+index 8e6c6d967e3..26efe2da2e3 100644
 --- a/src/sage/env.py
 +++ b/src/sage/env.py
-@@ -178,7 +178,29 @@ if sys.platform == 'win32':
-     home_dir = os.environ.get("USERPROFILE")
- else:  # Unix-like systems (Linux, macOS, etc.)
-     home_dir = os.environ.get("HOME")
--DOT_SAGE = var("DOT_SAGE", join(home_dir, ".sage"))
-+
+@@ -175,7 +175,28 @@ SAGE_DOC_SERVER_URL = var("SAGE_DOC_SERVER_URL")
+ SAGE_DOC_LOCAL_PORT = var("SAGE_DOC_LOCAL_PORT", "0")
+ 
+ # ~/.sage
+-DOT_SAGE = var("DOT_SAGE", os.path.expanduser("~/.sage"))
 +def _create_tmp_dotsage() -> str:
 +    r"""
 +    Create a temporary directory to be used as ~/.sage on systems where no HOME
@@ -40,10 +38,10 @@ index f6c198a8617..b69631bbc31 100644
 +
 +    return tmpdir.name
 +
-+DOT_SAGE = var("DOT_SAGE", join(home_dir, ".sage")) or _create_tmp_dotsage()
++DOT_SAGE = var("DOT_SAGE", os.path.expanduser("~/.sage")) or _create_tmp_dotsage()
  SAGE_STARTUP_FILE = var("SAGE_STARTUP_FILE", join(DOT_SAGE, "init.sage"))
  
  # for sage_setup.setenv
 -- 
-2.54.0
+2.56.0
 

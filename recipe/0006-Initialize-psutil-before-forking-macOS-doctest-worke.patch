@@ -1,0 +1,89 @@
+From 3b50c2bc2cd7be60f318235006e722c54957a320 Mon Sep 17 00:00:00 2001
+From: Dima Pasechnik <dima@pasechnik.info>
+Date: Fri, 16 Oct 2026 18:19:37 -0500
+Subject: [PATCH 6/6] Initialize psutil before forking macOS doctest workers
+
+---
+ src/sage/doctest/forker.py      | 10 +++++++
+ src/sage/doctest/forker_test.py | 48 +++++++++++++++++++++++++++++++++
+ 2 files changed, 58 insertions(+)
+ create mode 100644 src/sage/doctest/forker_test.py
+
+diff --git a/src/sage/doctest/forker.py b/src/sage/doctest/forker.py
+index 43da35cd115..6e73e2b528d 100644
+--- a/src/sage/doctest/forker.py
++++ b/src/sage/doctest/forker.py
+@@ -175,6 +175,16 @@ def init_sage(controller: DocTestController | None = None) -> None:
+         sage: {'a':23, 'b':34, 'au':56, 'bbf':234, 'aaa':234}
+         {'a': 23, 'aaa': 234, 'au': 56, 'b': 34, 'bbf': 234}
+     """
++    if sys.platform == 'darwin':
++        # Timer._quick_cputime uses psutil for pexpect processes on macOS.
++        # Import it before forking: its IOKit initialization can abort in a
++        # forked worker (https://github.com/giampaolo/psutil/issues/2713).
++        try:
++            import psutil  # noqa: F401
++        except ImportError:
++            # psutil is an optional dependency of the doctest timer.
++            pass
++
+     try:
+         # We need to ensure that the Matplotlib font cache is built to
+         # avoid spurious warnings (see Issue #20222).
+diff --git a/src/sage/doctest/forker_test.py b/src/sage/doctest/forker_test.py
+new file mode 100644
+index 00000000000..d6d0e4b2dd0
+--- /dev/null
++++ b/src/sage/doctest/forker_test.py
+@@ -0,0 +1,48 @@
++"""Tests for initialization of doctest workers."""
++
++import subprocess
++import sys
++import textwrap
++
++import pytest
++
++
++@pytest.mark.skipif(sys.platform != "darwin", reason="macOS psutil initialization")
++def test_cpu_time_after_fork():
++    """The timer can use psutil in a worker forked from a threaded parent."""
++    pytest.importorskip("psutil")
++    # Start a fresh interpreter: pytest or its plugins may already have
++    # imported psutil, which would hide the initialization problem.
++    code = textwrap.dedent("""\
++        import os
++        import resource
++        import threading
++
++        from sage.doctest.forker import init_sage
++        from sage.doctest.util import Timer
++
++        resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
++        init_sage()
++
++        class RunningInterface:
++            def __call__(self):
++                return self
++
++            def is_running(self):
++                return True
++
++            def pid(self):
++                return os.getpid()
++
++        # Make macOS enforce its Objective-C initialization checks after fork.
++        threading.Thread(target=threading.Event().wait, daemon=True).start()
++        pid = os.fork()
++        if pid == 0:
++            assert Timer()._quick_cputime([RunningInterface()]) >= 0
++            os._exit(0)
++        _, status = os.waitpid(pid, 0)
++        assert os.waitstatus_to_exitcode(status) == 0, status
++        """)
++    result = subprocess.run([sys.executable, "-c", code], capture_output=True,
++                            text=True, timeout=60, check=False)
++    assert result.returncode == 0, result.stdout + result.stderr
+-- 
+2.56.0
+

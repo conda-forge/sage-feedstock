@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "10.9"
+  version: "10.10"
   name: sage
 
 recipe:
@@ -10,16 +10,17 @@ recipe:
 
 source:
   url: https://github.com/sagemath/sage/archive/${{ version }}.tar.gz
-  sha256: c4cebeebf45412830e35672aab40260852b92e64a29f852c7b467209c9654ebe
+  sha256: 6960e1b4c33b77bbdff4928b37ad6682a6c5b0762a0bee5c9757aa6b790bbdf6
   patches:
     # See https://github.com/sagemath/sage/issues/42002
     - 0001-Allow-SageMath-to-start-when-neither-HOME-nor-DOT_SA.patch
     - 0002-Teach-atomic_write-to-create-the-containing-director.patch
     - 0003-Use-standard-.sage-implementation-in-doctests.patch
-    # See https://github.com/sagemath/sage/pull/42005
-    - 0004-Do-not-invoke-GAP-when-cross-compiling.patch
     # See https://github.com/sagemath/sage/pull/42006
-    - 0005-Do-not-require-ecl-maxima-to-be-executable-when-cros.patch
+    - 0004-Do-not-require-ecl-maxima-to-be-executable-when-cros.patch
+    - 0005-Do-not-break-long-lines-when-reporting-GAP-roots.patch
+    # See https://patch-diff.githubusercontent.com/raw/sagemath/sage/pull/42998 to fix doctesting on Silicon
+    - 0006-Initialize-psutil-before-forking-macOS-doctest-worke.patch
 
 build:
   number: 0
@@ -53,7 +54,7 @@ outputs:
         - memory-allocator
         - ninja
         - numpy
-        - pkg-config
+        - pkgconf
       host:
         # sagelib needs bliss at build time but not at runtime, see sagemath-bliss
         - bliss         >=0.77
@@ -61,7 +62,7 @@ outputs:
         - cypari2       2.2.*
         - cysignals     1.12.*
         - cython        3.2.*
-        - ecl           >=24.5.10,<25
+        - ecl           >=26.5.5,<27
         - eclib
         - ecm           7.*
         - expat
@@ -78,6 +79,7 @@ outputs:
         - jinja2        3.1.*
         - jupyter_core  >=5.9.1,<6
         - lcalc         2.1.*
+        - libatomic_ops 7.10.*
         - libblas
         - libboost-headers
         - libbraiding   1.3.2.*
@@ -93,7 +95,7 @@ outputs:
         - lrcalc        2.1.*
         - m4ri
         - m4rie
-        - maxima        5.47.0.*
+        - maxima        5.49.0.*
         - memory-allocator
         - meson-python
         - mpc           1.*
@@ -103,14 +105,14 @@ outputs:
         - numpy
         - pari
         - pip
-        - pkg-config
+        - pkgconf
         - pkgconfig
         - planarity     4.*
         - ppl           1.2.*
         - pplpy         0.9.*
         - python
         - readline
-        - rw            0.9.*
+        - rw            0.10.*
         # sagelib needs sirocco at build time but not at runtime, see sagemath-sirocco
         - sirocco       >=2.1.1,<3
         - singular      ==4.4.1.p5
@@ -119,7 +121,7 @@ outputs:
         - zlib
 
         # sage runtime deps
-        - ipython       >=9.12.0,<10
+        - ipython       >=9.16.0,<10
         - pexpect       >=4.9.0,<5
 
         # for the symlinks
@@ -147,6 +149,7 @@ outputs:
         - ${{ pin_compatible("gap-core", upper_bound="x.x") }}
         - ${{ pin_compatible("giac", upper_bound="x.x") }}
         - ${{ pin_compatible("gmpy2", upper_bound="x.x") }}
+        - highs 1.14.*
         - ipython >=9.12.0,<10
         - ${{ pin_compatible("jinja2", upper_bound="x.x") }}
         - ${{ pin_compatible("jupyter_core") }}
@@ -161,7 +164,7 @@ outputs:
         - python
         - python-lrcalc
         # Explicitly pin singular since its run_exports is having issues, see https://github.com/conda-forge/singular-feedstock/issues/37
-        - singular      ==4.4.1.p5
+        - singular ==4.4.1.p5
         - six
         - ${{ pin_compatible("threejs-sage") }}
       ignore_run_exports:
@@ -262,13 +265,13 @@ outputs:
         - nbclient >=0.10.4,<0.11
         - nbconvert >=7.17.0,<8
         - nbformat >=5.10.4,<6
-        - networkx >=3.6.1,<4
+        - networkx >=3.7,<4
         - notebook >=7.5.5,<8
         - palp >=2.21,<3
         - pillow >=12.1.1,<13
         # required for sage.misc.package.pip_installed_packages
         - pip
-        - pkg-config
+        - pkgconf
         - pkgconfig
         - python >=3.9
         - pythran >=0.18.1,<0.19
@@ -281,6 +284,8 @@ outputs:
         - sagemath-db-polytopes >=20170220
         - sagetex >=3.6.1,<4
         - scipy >=1.17.1,<2
+        # provides distutils.log used by sage.misc.cython
+        - setuptools
         - sphinx >=9.1.0,<10
         - sqlite >=3.36,<4
         - sympow >=2.023.6,<3
@@ -307,6 +312,8 @@ outputs:
       - files:
           source:
             - src/sage/
+            - pyproject.toml
+            - conftest.py
         requirements:
           run:
             - bc
@@ -316,6 +323,16 @@ outputs:
           set -x
           ln -s $PREFIX local
 
+          # Copy generated __init__.py files into the test environment since otherwise fast_callable tests fail
+          python - <<'EOF'
+          import pathlib, shutil, sage.ext
+          installed = pathlib.Path(sage.ext.__file__).parent.parent
+          for init in installed.rglob("__init__.py"):
+              target = pathlib.Path("src/sage") / init.relative_to(installed)
+              if target.parent.is_dir() and not target.exists():
+                  shutil.copy(init, target)
+          EOF
+
           export SAGE_LOCAL=$PWD/local
           export SAGE_ROOT=$PWD
           ls $SAGE_ROOT
@@ -323,6 +340,11 @@ outputs:
           echo $SAGE_ROOT > "$SAGE_LOCAL/lib/sage-current-location.txt"
 
           export SAGE_NUM_THREADS=$CPU_COUNT
+
+          if [[ "$(uname)" == "Darwin" ]]; then
+            # sage-env sets this for `sage -t`; we call python -m sage.doctest directly (sagemath/sage#25921)
+            export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+          fi
 
           set +e
           python -m sage.doctest -p $CPU_COUNT --initial --all --optional=memlimit,sage | tee doctest.txt

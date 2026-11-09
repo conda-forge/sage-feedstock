@@ -1,0 +1,134 @@
+From 3753a74ced3137f2a01649279bb3c1f4a22829a1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Fri, 6 Nov 2026 13:59:38 -0600
+Subject: [PATCH 4/4] Do not require ecl/maxima to be executable when
+ cross-compiling
+
+---
+ meson.options             |  7 +++
+ src/sage/libs/meson.build | 89 ++++++++++++++++++++++++++-------------
+ 2 files changed, 66 insertions(+), 30 deletions(-)
+
+diff --git a/meson.options b/meson.options
+index 97145ea90fc..af5bc520941 100644
+--- a/meson.options
++++ b/meson.options
+@@ -8,6 +8,13 @@ option(
+   description: 'Path to SAGE_LOCAL directory (only used for compatibility with the old Sage-the-Distro',
+ )
+ 
++option(
++  'MAXIMA_FAS',
++  type: 'string',
++  value: '',
++  description: 'Location of maxima.fas; empty to locate this file automatically if possible',
++)
++
+ #
+ # Boolean options
+ #
+diff --git a/src/sage/libs/meson.build b/src/sage/libs/meson.build
+index e1aeea0e1f4..f6d7fc2eae7 100644
+--- a/src/sage/libs/meson.build
++++ b/src/sage/libs/meson.build
+@@ -65,38 +65,67 @@ else
+ endif
+ 
+ if use_system_ecl
+-  maxima_check = run_command(
+-    system_ecl_bin,
+-    '--eval',
+-    '(require \'maxima)',
+-    '--eval',
+-    '(quit)',
+-    check: false,
+-  )
+-  if maxima_check.returncode() == 0
+-    # ecl does not have any problems with Maxima, so nothing needs to be set here:
+-    conf_data.set('SAGE_MAXIMA_FAS', '')
++  maxima_bin = find_program('maxima', required: false, disabler: true)
++  if maxima_bin.found()
++    maxima_fas = get_option('MAXIMA_FAS')
++
++    # Try to run maxima with the configured MAXIMA_FAS
++    if maxima_fas != ''
++      if meson.can_run_host_binaries()
++        maxima_check = run_command(
++          system_ecl_bin,
++          '--eval',
++          '(require \'maxima "' + maxima_fas + '")',
++          '--eval',
++          '(quit)',
++          check: false,
++        )
++        maxima_present = maxima_check.returncode() == 0
++      else
++        # We cannot execute ecl so we assume that maxima is functional
++        maxima_present = true
++      endif
++    else
++      if meson.can_run_host_binaries()
++        maxima_check = run_command(
++          system_ecl_bin,
++          '--eval',
++          '(require \'maxima)',
++          '--eval',
++          '(quit)',
++          check: false,
++        )
++        if maxima_check.returncode() == 0
++          # ecl does not have any problems with Maxima, so nothing needs to be set here:
++          maxima_present = true
++        else
++          # try the custom SageMath maxima.fas location
++          maxima_fas = join_paths(
++            get_option('SAGE_LOCAL'),
++            'lib',
++            'ecl',
++            'maxima.fas',
++          )
++          maxima_check = run_command(
++            system_ecl_bin,
++            '--eval',
++            '(require \'maxima "' + maxima_fas + '")',
++            '--eval',
++            '(quit)',
++            check: false,
++          )
++          maxima_present = maxima_check.returncode() == 0
++        endif
++      else
++        # We cannot execute ecl so we assume that maxima is functional without any special setup
++        maxima_present = true
++      endif
++    endif
++
++    conf_data.set('SAGE_MAXIMA_FAS', maxima_fas)
+   else
+-    # Try Sage's custom maxima location
+-    sage_maxima = join_paths(
+-      get_option('SAGE_LOCAL'),
+-      'lib',
+-      'ecl-' + ecl_version,
+-      'maxima.fas',
+-    )
+-    maxima_check = run_command(
+-      system_ecl_bin,
+-      '--eval',
+-      '(require \'maxima "' + sage_maxima + '")',
+-      '--eval',
+-      '(quit)',
+-      check: false,
+-    )
+-    conf_data.set('SAGE_MAXIMA_FAS', sage_maxima)
++    maxima_present = false
+   endif
+-
+-  maxima_bin = find_program('maxima', required: false, disabler: true)
+-  maxima_present = maxima_check.returncode() == 0 and maxima_bin.found()
+ else
+   maxima_present = false
+ endif
+-- 
+2.56.0
+
